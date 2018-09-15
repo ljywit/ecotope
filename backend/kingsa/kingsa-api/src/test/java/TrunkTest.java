@@ -1,7 +1,8 @@
-import model.WaterQualityEstimateBO;
-import model.WaterQualityMIBase;
+import com.rdc.kingsa.model.bo.water.quality.WaterQualityEstimateBO;
+import com.rdc.kingsa.model.entity.water.quality.WaterQualityMIBase;
+import com.rdc.kingsa.service.SingleFactorEstimateService;
 import org.junit.Test;
-import service.inf.SingleFactorEstimate;
+import com.rdc.kingsa.service.inf.SingleFactorEstimate;
 
 import java.math.BigDecimal;
 

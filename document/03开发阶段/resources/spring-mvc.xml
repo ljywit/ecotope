@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd   
+     http://www.springframework.org/schema/aop    
+     http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     http://www.springframework.org/schema/task
+     http://www.springframework.org/schema/task/spring-task-4.0.xsd
+     http://www.springframework.org/schema/mvc
+     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <mvc:annotation-driven validator="validator"
+                           conversion-service="conversion-service">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String"
+                                                 value="yyyy-MM-dd HH:mm:ss"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+            <!--<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">-->
+            <!--<property name="supportedMediaTypes">-->
+            <!--<list>-->
+            <!--<value>application/json;charset=UTF-8</value>-->
+            <!--<value>text/html;charset=UTF-8</value>-->
+            <!--<value>application/xml;charset=UTF-8</value>-->
+            <!--</list>-->
+            <!--</property>-->
+            <!--<property name="features">-->
+            <!--<list>-->
+            <!--&lt;!&ndash; 默认的意思就是不配置这个属性，配置了就不是默认了 &ndash;&gt;-->
+            <!--&lt;!&ndash; 是否输出值为null的字段 ，默认是false&ndash;&gt;-->
+            <!--<value>WriteMapNullValue</value>-->
+            <!--</list>-->
+            <!--</property>-->
+            <!--</bean>-->
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:default-servlet-handler/>
+
+    <context:component-scan base-package="com.rdc.kingsa.controller,com.rdc.kingsa.security"/>
+
+    <!-- 静态资源访问（不拦截此目录下的东西的访问） -->
+    <!--<mvc:resources mapping="/swagger/**" location="/swagger/"/>-->
+
+    <bean class="com.rdc.kingsa.config.SwaggerConfig"/>
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename">
+            <value>messages</value>
+        </property>
+    </bean>
+
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <bean id="conversion-service"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>104857600</value>
+        </property>
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
+    </bean>
+
+    <mvc:interceptors>
+        <ref bean="permissionInterceptor"/>
+        <!-- <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping
+            path="/user/login/**" /> <bean class="com.rdc.kingsa.security.interceptor.LoginStatusInterceptor"
+            /> </mvc:interceptor> -->
+    </mvc:interceptors>
+
+</beans>

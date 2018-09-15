@@ -11,6 +11,7 @@
     <modules>
         <module>kingsa-api</module>
         <module>kingsa-input</module>
+        <module>kingsa-webapp</module>
     </modules>
 
 
