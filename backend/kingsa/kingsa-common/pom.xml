@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>com.rdc.kingsa.api</artifactId>
+    <artifactId>com.rdc.kingsa.common</artifactId>
 
     <dependencies>
         <dependency>

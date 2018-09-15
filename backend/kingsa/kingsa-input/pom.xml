@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.rdc.kingsa</groupId>
-            <artifactId>com.rdc.kingsa.api</artifactId>
+            <artifactId>com.rdc.kingsa.common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- log4j -->
