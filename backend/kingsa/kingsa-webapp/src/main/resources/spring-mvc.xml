@@ -94,11 +94,11 @@
         </property>
     </bean>
 
-    <mvc:interceptors>
-        <ref bean="permissionInterceptor"/>
-        <!-- <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping
-            path="/user/login/**" /> <bean class="com.rdc.kingsa.security.interceptor.LoginStatusInterceptor"
-            /> </mvc:interceptor> -->
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<ref bean="permissionInterceptor"/>-->
+        <!--&lt;!&ndash; <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping-->
+            <!--path="/user/login/**" /> <bean class="com.rdc.kingsa.security.interceptor.LoginStatusInterceptor"-->
+            <!--/> </mvc:interceptor> &ndash;&gt;-->
+    <!--</mvc:interceptors>-->
 
 </beans>

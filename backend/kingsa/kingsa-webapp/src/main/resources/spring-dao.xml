@@ -23,9 +23,9 @@
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-        <property name="url" value="jdbc:sqlserver://10.6.172.178:1433;DatabaseName=KINGSA"/>
+        <property name="url" value="jdbc:sqlserver://LJY_HOMEPC:1433;DatabaseName=KINGSA"/>
         <property name="username" value="sa"/>
-        <property name="password" value="kingsa"/>
+        <property name="password" value="ljywit123"/>
         <property name="filters" value="stat"/>
         <property name="maxActive" value="100"/>
         <property name="initialSize" value="1"/>
@@ -51,12 +51,12 @@
     </bean>
 
     <context:component-scan
-            base-package="com.rdc.kingsa.mapper,com.rdc.kingsa.com.rdc.kingsa.service.impl,com.rdc.kingsa.util,com.rdc.kingsa.manager"/>
+            base-package="com.rdc.kingsa.input"/>
 
     <!-- 配置Mapper扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描包路径,如果需要扫描多个包中间用半角逗号隔开 -->
-        <property name="basePackage" value="com.rdc.kingsa.mapper"/>
+        <property name="basePackage" value="com.rdc.kingsa.input.mapper"/>
         <!-- 这边不能使用ref="sqlSessionFactory"原因是因为上面加载配置文件导致这边引用会报错 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>

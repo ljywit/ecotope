@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rdc.kingsa.input.mapper.sample.WaterQualityFCMapper">
+    <resultMap id="BaseResultMap" type="com.rdc.kingsa.model.entity.water.quality.WaterQualityFC">
+        <id column="ID" property="id" jdbcType="VARCHAR"/>
+        <result column="PROCESS_ID" property="processId" jdbcType="VARCHAR"/>
+        <result column="SEC_ID" property="secId" jdbcType="VARCHAR"/>
+        <result column="MONITOR_TIME" property="monitorTime" jdbcType="TIMESTAMP"/>
+        <result column="WATER_TEMP" property="waterTemp" jdbcType="FLOAT"/>
+        <result column="WATER_TEMP_SY" property="waterTempSy" jdbcType="VARCHAR"/>
+        <result column="WATER_TEMP_TY" property="waterTempTy" jdbcType="VARCHAR"/>
+        <result column="PH_VALUE" property="phValue" jdbcType="FLOAT"/>
+        <result column="PH_VALUE_SY" property="phValueSy" jdbcType="VARCHAR"/>
+        <result column="PH_VALUE_TY" property="phValueTy" jdbcType="VARCHAR"/>
+        <result column="DIS_OXYGEN" property="disOxygen" jdbcType="FLOAT"/>
+        <result column="DIS_OXYGEN_SY" property="disOxygenSy" jdbcType="VARCHAR"/>
+        <result column="DIS_OXYGEN_TY" property="disOxygenTy" jdbcType="VARCHAR"/>
+        <result column="PERMANGANATE" property="permanganate" jdbcType="FLOAT"/>
+        <result column="PERMANGANATE_SY" property="permanganateSy" jdbcType="VARCHAR"/>
+        <result column="PERMANGANATE_TY" property="permanganateTy" jdbcType="VARCHAR"/>
+        <result column="OX_DEMAND" property="oxDemand" jdbcType="FLOAT"/>
+        <result column="OX_DEMAND_SY" property="oxDemandSy" jdbcType="VARCHAR"/>
+        <result column="OX_DEMAND_TY" property="oxDemandTy" jdbcType="VARCHAR"/>
+        <result column="BO_DEMAND" property="boDemand" jdbcType="FLOAT"/>
+        <result column="BO_DEMAND_SY" property="boDemandSy" jdbcType="VARCHAR"/>
+        <result column="BO_DEMAND_TY" property="boDemandTy" jdbcType="VARCHAR"/>
+        <result column="AMMONIA" property="ammonia" jdbcType="FLOAT"/>
+        <result column="AMMONIA_SY" property="ammoniaSy" jdbcType="VARCHAR"/>
+        <result column="AMMONIA_TY" property="ammoniaTy" jdbcType="VARCHAR"/>
+        <result column="PHOSPHORUS" property="phosphorus" jdbcType="FLOAT"/>
+        <result column="PHOSPHORUS_SY" property="phosphorusSy" jdbcType="VARCHAR"/>
+        <result column="PHOSPHORUS_TY" property="phosphorusTy" jdbcType="VARCHAR"/>
+        <result column="NITROGEN" property="nitrogen" jdbcType="FLOAT"/>
+        <result column="NITROGEN_SY" property="nitrogenSy" jdbcType="VARCHAR"/>
+        <result column="NITROGEN_TY" property="nitrogenTy" jdbcType="VARCHAR"/>
+        <result column="COPPER" property="copper" jdbcType="FLOAT"/>
+        <result column="COPPER_SY" property="copperSy" jdbcType="VARCHAR"/>
+        <result column="COPPER_TY" property="copperTy" jdbcType="VARCHAR"/>
+        <result column="ZINC" property="zinc" jdbcType="FLOAT"/>
+        <result column="ZINC_SY" property="zincSy" jdbcType="VARCHAR"/>
+        <result column="ZINC_TY" property="zincTy" jdbcType="VARCHAR"/>
+        <result column="FLUORIDE" property="fluoride" jdbcType="FLOAT"/>
+        <result column="FLUORIDE_SY" property="fluorideSy" jdbcType="VARCHAR"/>
+        <result column="FLUORIDE_TY" property="fluorideTy" jdbcType="VARCHAR"/>
+        <result column="SELENIUM" property="selenium" jdbcType="FLOAT"/>
+        <result column="SELENIUM_SY" property="seleniumSy" jdbcType="VARCHAR"/>
+        <result column="SELENIUM_TY" property="seleniumTy" jdbcType="VARCHAR"/>
+        <result column="ARSENIC" property="arsenic" jdbcType="FLOAT"/>
+        <result column="ARSENIC_SY" property="arsenicSy" jdbcType="VARCHAR"/>
+        <result column="ARSENIC_TY" property="arsenicTy" jdbcType="VARCHAR"/>
+        <result column="MERCURY" property="mercury" jdbcType="FLOAT"/>
+        <result column="MERCURY_SY" property="mercurySy" jdbcType="VARCHAR"/>
+        <result column="MERCURY_TY" property="mercuryTy" jdbcType="VARCHAR"/>
+        <result column="CADMIUM" property="cadmium" jdbcType="FLOAT"/>
+        <result column="CADMIUM_SY" property="cadmiumSy" jdbcType="VARCHAR"/>
+        <result column="CADMIUM_TY" property="cadmiumTy" jdbcType="VARCHAR"/>
+        <result column="CHROMIUM" property="chromium" jdbcType="FLOAT"/>
+        <result column="CHROMIUM_SY" property="chromiumSy" jdbcType="VARCHAR"/>
+        <result column="CHROMIUM_TY" property="chromiumTy" jdbcType="VARCHAR"/>
+        <result column="LEAD" property="lead" jdbcType="FLOAT"/>
+        <result column="LEAD_SY" property="leadSy" jdbcType="VARCHAR"/>
+        <result column="LEAD_TY" property="leadTy" jdbcType="VARCHAR"/>
+        <result column="CYANIDE" property="cyanide" jdbcType="FLOAT"/>
+        <result column="CYANIDE_SY" property="cyanideSy" jdbcType="VARCHAR"/>
+        <result column="CYANIDE_TY" property="cyanideTy" jdbcType="VARCHAR"/>
+        <result column="PHENOL" property="phenol" jdbcType="FLOAT"/>
+        <result column="PHENOL_SY" property="phenolSy" jdbcType="VARCHAR"/>
+        <result column="PHENOL_TY" property="phenolTy" jdbcType="VARCHAR"/>
+        <result column="PETROLEUM" property="petroleum" jdbcType="FLOAT"/>
+        <result column="PETROLEUM_SY" property="petroleumSy" jdbcType="VARCHAR"/>
+        <result column="PETROLEUM_TY" property="petroleumTy" jdbcType="VARCHAR"/>
+        <result column="SURFACTANT" property="surfactant" jdbcType="FLOAT"/>
+        <result column="SURFACTANT_SY" property="surfactantSy" jdbcType="VARCHAR"/>
+        <result column="SURFACTANT_TY" property="surfactantTy" jdbcType="VARCHAR"/>
+        <result column="SULFIDE" property="sulfide" jdbcType="FLOAT"/>
+        <result column="SULFIDE_SY" property="sulfideSy" jdbcType="VARCHAR"/>
+        <result column="SULFIDE_TY" property="sulfideTy" jdbcType="VARCHAR"/>
+        <result column="COLIFORM" property="coliform" jdbcType="FLOAT"/>
+        <result column="COLIFORM_SY" property="coliformSy" jdbcType="VARCHAR"/>
+        <result column="COLIFORM_TY" property="coliformTy" jdbcType="VARCHAR"/>
+        <result column="CHLOR_A" property="chlorA" jdbcType="FLOAT"/>
+        <result column="CHLOR_A_SY" property="chlorASy" jdbcType="VARCHAR"/>
+        <result column="CHLOR_A_TY" property="chlorATy" jdbcType="VARCHAR"/>
+        <result column="TRANSPARENCY" property="transparency" jdbcType="FLOAT"/>
+        <result column="TRANSPARENCY_SY" property="transparencySy" jdbcType="VARCHAR"/>
+        <result column="TRANSPARENCY_TY" property="transparencyTy" jdbcType="VARCHAR"/>
+        <result column="SUSPENDED" property="suspended" jdbcType="FLOAT"/>
+        <result column="SUSPENDED_SY" property="suspendedSy" jdbcType="VARCHAR"/>
+        <result column="SUSPENDED_TY" property="suspendedTy" jdbcType="VARCHAR"/>
+        <result column="QA_TY" property="qaTy" jdbcType="VARCHAR"/>
+        <result column="MON_UNIT" property="monUnit" jdbcType="VARCHAR"/>
+        <result column="MONITOR" property="monitor" jdbcType="VARCHAR"/>
+        <result column="INPUTER" property="inputer" jdbcType="VARCHAR"/>
+        <result column="AUDITOR" property="auditor" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="REMARKS" property="remarks" jdbcType="VARCHAR"/>
+        <result column="REPORT_ID" property="reportId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, PROCESS_ID, SEC_ID, MONITOR_TIME, WATER_TEMP, WATER_TEMP_SY, WATER_TEMP_TY, PH_VALUE,
+        PH_VALUE_SY, PH_VALUE_TY, DIS_OXYGEN, DIS_OXYGEN_SY, DIS_OXYGEN_TY, PERMANGANATE,
+        PERMANGANATE_SY, PERMANGANATE_TY, OX_DEMAND, OX_DEMAND_SY, OX_DEMAND_TY, BO_DEMAND,
+        BO_DEMAND_SY, BO_DEMAND_TY, AMMONIA, AMMONIA_SY, AMMONIA_TY, PHOSPHORUS, PHOSPHORUS_SY,
+        PHOSPHORUS_TY, NITROGEN, NITROGEN_SY, NITROGEN_TY, COPPER, COPPER_SY, COPPER_TY,
+        ZINC, ZINC_SY, ZINC_TY, FLUORIDE, FLUORIDE_SY, FLUORIDE_TY, SELENIUM, SELENIUM_SY,
+        SELENIUM_TY, ARSENIC, ARSENIC_SY, ARSENIC_TY, MERCURY, MERCURY_SY, MERCURY_TY, CADMIUM,
+        CADMIUM_SY, CADMIUM_TY, CHROMIUM, CHROMIUM_SY, CHROMIUM_TY, LEAD, LEAD_SY, LEAD_TY,
+        CYANIDE, CYANIDE_SY, CYANIDE_TY, PHENOL, PHENOL_SY, PHENOL_TY, PETROLEUM, PETROLEUM_SY,
+        PETROLEUM_TY, SURFACTANT, SURFACTANT_SY, SURFACTANT_TY, SULFIDE, SULFIDE_SY, SULFIDE_TY,
+        COLIFORM, COLIFORM_SY, COLIFORM_TY, CHLOR_A, CHLOR_A_SY, CHLOR_A_TY, TRANSPARENCY,
+        TRANSPARENCY_SY, TRANSPARENCY_TY, SUSPENDED, SUSPENDED_SY, SUSPENDED_TY, QA_TY, MON_UNIT,
+        MONITOR, INPUTER, AUDITOR, CREATE_TIME, MODIFY_TIME, REMARKS, REPORT_ID
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from WATER_QUALITY_FC
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM WATER_QUALITY_FC
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="com.rdc.kingsa.model.entity.water.quality.WaterQualityFC">
+        <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+            SELECT
+            SUBSTRING (uuid, 1, 8) + SUBSTRING (uuid, 10, 4) + SUBSTRING (uuid, 15, 4) + SUBSTRING (uuid, 20, 4) + SUBSTRING (uuid, 25, 12)
+            FROM
+            (
+            SELECT
+            CAST (NEWID() AS VARCHAR(36)) AS uuid
+            ) s
+        </selectKey>
+        insert into WATER_QUALITY_FC (ID,PROCESS_ID, SEC_ID, MONITOR_TIME,
+        WATER_TEMP, WATER_TEMP_SY, WATER_TEMP_TY,
+        PH_VALUE, PH_VALUE_SY, PH_VALUE_TY,
+        DIS_OXYGEN, DIS_OXYGEN_SY, DIS_OXYGEN_TY,
+        PERMANGANATE, PERMANGANATE_SY, PERMANGANATE_TY,
+        OX_DEMAND, OX_DEMAND_SY, OX_DEMAND_TY,
+        BO_DEMAND, BO_DEMAND_SY, BO_DEMAND_TY,
+        AMMONIA, AMMONIA_SY, AMMONIA_TY,
+        PHOSPHORUS, PHOSPHORUS_SY, PHOSPHORUS_TY,
+        NITROGEN, NITROGEN_SY, NITROGEN_TY,
+        COPPER, COPPER_SY, COPPER_TY,
+        ZINC, ZINC_SY, ZINC_TY,
+        FLUORIDE, FLUORIDE_SY, FLUORIDE_TY,
+        SELENIUM, SELENIUM_SY, SELENIUM_TY,
+        ARSENIC, ARSENIC_SY, ARSENIC_TY,
+        MERCURY, MERCURY_SY, MERCURY_TY,
+        CADMIUM, CADMIUM_SY, CADMIUM_TY,
+        CHROMIUM, CHROMIUM_SY, CHROMIUM_TY,
+        LEAD, LEAD_SY, LEAD_TY,
+        CYANIDE, CYANIDE_SY, CYANIDE_TY,
+        PHENOL, PHENOL_SY, PHENOL_TY,
+        PETROLEUM, PETROLEUM_SY, PETROLEUM_TY,
+        SURFACTANT, SURFACTANT_SY, SURFACTANT_TY,
+        SULFIDE, SULFIDE_SY, SULFIDE_TY,
+        COLIFORM, COLIFORM_SY, COLIFORM_TY,
+        CHLOR_A, CHLOR_A_SY, CHLOR_A_TY,
+        TRANSPARENCY, TRANSPARENCY_SY, TRANSPARENCY_TY,
+        SUSPENDED, SUSPENDED_SY, SUSPENDED_TY,
+        QA_TY, MON_UNIT, MONITOR,
+        INPUTER, AUDITOR, CREATE_TIME,
+        MODIFY_TIME, REMARKS, REPORT_ID
+        )
+        values (#{id,jdbcType=VARCHAR},#{processId,jdbcType=VARCHAR}, #{secId,jdbcType=VARCHAR},
+        #{monitorTime,jdbcType=TIMESTAMP},
+        #{waterTemp,jdbcType=FLOAT}, #{waterTempSy,jdbcType=VARCHAR},
+        #{waterTempTy,jdbcType=VARCHAR},
+        #{phValue,jdbcType=FLOAT}, #{phValueSy,jdbcType=VARCHAR}, #{phValueTy,jdbcType=VARCHAR},
+        #{disOxygen,jdbcType=FLOAT}, #{disOxygenSy,jdbcType=VARCHAR},
+        #{disOxygenTy,jdbcType=VARCHAR},
+        #{permanganate,jdbcType=FLOAT}, #{permanganateSy,jdbcType=VARCHAR},
+        #{permanganateTy,jdbcType=VARCHAR},
+        #{oxDemand,jdbcType=FLOAT}, #{oxDemandSy,jdbcType=VARCHAR}, #{oxDemandTy,jdbcType=VARCHAR},
+        #{boDemand,jdbcType=FLOAT}, #{boDemandSy,jdbcType=VARCHAR}, #{boDemandTy,jdbcType=VARCHAR},
+        #{ammonia,jdbcType=FLOAT}, #{ammoniaSy,jdbcType=VARCHAR}, #{ammoniaTy,jdbcType=VARCHAR},
+        #{phosphorus,jdbcType=FLOAT}, #{phosphorusSy,jdbcType=VARCHAR},
+        #{phosphorusTy,jdbcType=VARCHAR},
+        #{nitrogen,jdbcType=FLOAT}, #{nitrogenSy,jdbcType=VARCHAR}, #{nitrogenTy,jdbcType=VARCHAR},
+        #{copper,jdbcType=FLOAT}, #{copperSy,jdbcType=VARCHAR}, #{copperTy,jdbcType=VARCHAR},
+        #{zinc,jdbcType=FLOAT}, #{zincSy,jdbcType=VARCHAR}, #{zincTy,jdbcType=VARCHAR},
+        #{fluoride,jdbcType=FLOAT}, #{fluorideSy,jdbcType=VARCHAR}, #{fluorideTy,jdbcType=VARCHAR},
+        #{selenium,jdbcType=FLOAT}, #{seleniumSy,jdbcType=VARCHAR}, #{seleniumTy,jdbcType=VARCHAR},
+        #{arsenic,jdbcType=FLOAT}, #{arsenicSy,jdbcType=VARCHAR}, #{arsenicTy,jdbcType=VARCHAR},
+        #{mercury,jdbcType=FLOAT}, #{mercurySy,jdbcType=VARCHAR}, #{mercuryTy,jdbcType=VARCHAR},
+        #{cadmium,jdbcType=FLOAT}, #{cadmiumSy,jdbcType=VARCHAR}, #{cadmiumTy,jdbcType=VARCHAR},
+        #{chromium,jdbcType=FLOAT}, #{chromiumSy,jdbcType=VARCHAR}, #{chromiumTy,jdbcType=VARCHAR},
+        #{lead,jdbcType=FLOAT}, #{leadSy,jdbcType=VARCHAR}, #{leadTy,jdbcType=VARCHAR},
+        #{cyanide,jdbcType=FLOAT}, #{cyanideSy,jdbcType=VARCHAR}, #{cyanideTy,jdbcType=VARCHAR},
+        #{phenol,jdbcType=FLOAT}, #{phenolSy,jdbcType=VARCHAR}, #{phenolTy,jdbcType=VARCHAR},
+        #{petroleum,jdbcType=FLOAT}, #{petroleumSy,jdbcType=VARCHAR},
+        #{petroleumTy,jdbcType=VARCHAR},
+        #{surfactant,jdbcType=FLOAT}, #{surfactantSy,jdbcType=VARCHAR},
+        #{surfactantTy,jdbcType=VARCHAR},
+        #{sulfide,jdbcType=FLOAT}, #{sulfideSy,jdbcType=VARCHAR}, #{sulfideTy,jdbcType=VARCHAR},
+        #{coliform,jdbcType=FLOAT}, #{coliformSy,jdbcType=VARCHAR}, #{coliformTy,jdbcType=VARCHAR},
+        #{chlorA,jdbcType=FLOAT}, #{chlorASy,jdbcType=VARCHAR}, #{chlorATy,jdbcType=VARCHAR},
+        #{transparency,jdbcType=FLOAT}, #{transparencySy,jdbcType=VARCHAR},
+        #{transparencyTy,jdbcType=VARCHAR},
+        #{suspended,jdbcType=FLOAT}, #{suspendedSy,jdbcType=VARCHAR},
+        #{suspendedTy,jdbcType=VARCHAR},
+        #{qaTy,jdbcType=VARCHAR}, #{monUnit,jdbcType=VARCHAR}, #{monitor,jdbcType=VARCHAR},
+        #{inputer,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+        #{modifyTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{reportId,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.rdc.kingsa.model.entity.water.quality.WaterQualityFC">
+        <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+            SELECT
+            SUBSTRING (uuid, 1, 8) + SUBSTRING (uuid, 10, 4) + SUBSTRING (uuid, 15, 4) + SUBSTRING (uuid, 20, 4) + SUBSTRING (uuid, 25, 12)
+            FROM
+            (
+            SELECT
+            CAST (NEWID() AS VARCHAR(36)) AS uuid
+            ) s
+        </selectKey>
+        insert into WATER_QUALITY_FC
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="processId != null">
+                PROCESS_ID,
+            </if>
+            <if test="secId != null">
+                SEC_ID,
+            </if>
+            <if test="monitorTime != null">
+                MONITOR_TIME,
+            </if>
+            <if test="waterTemp != null">
+                WATER_TEMP,
+            </if>
+            <if test="waterTempSy != null">
+                WATER_TEMP_SY,
+            </if>
+            <if test="waterTempTy != null">
+                WATER_TEMP_TY,
+            </if>
+            <if test="phValue != null">
+                PH_VALUE,
+            </if>
+            <if test="phValueSy != null">
+                PH_VALUE_SY,
+            </if>
+            <if test="phValueTy != null">
+                PH_VALUE_TY,
+            </if>
+            <if test="disOxygen != null">
+                DIS_OXYGEN,
+            </if>
+            <if test="disOxygenSy != null">
+                DIS_OXYGEN_SY,
+            </if>
+            <if test="disOxygenTy != null">
+                DIS_OXYGEN_TY,
+            </if>
+            <if test="permanganate != null">
+                PERMANGANATE,
+            </if>
+            <if test="permanganateSy != null">
+                PERMANGANATE_SY,
+            </if>
+            <if test="permanganateTy != null">
+                PERMANGANATE_TY,
+            </if>
+            <if test="oxDemand != null">
+                OX_DEMAND,
+            </if>
+            <if test="oxDemandSy != null">
+                OX_DEMAND_SY,
+            </if>
+            <if test="oxDemandTy != null">
+                OX_DEMAND_TY,
+            </if>
+            <if test="boDemand != null">
+                BO_DEMAND,
+            </if>
+            <if test="boDemandSy != null">
+                BO_DEMAND_SY,
+            </if>
+            <if test="boDemandTy != null">
+                BO_DEMAND_TY,
+            </if>
+            <if test="ammonia != null">
+                AMMONIA,
+            </if>
+            <if test="ammoniaSy != null">
+                AMMONIA_SY,
+            </if>
+            <if test="ammoniaTy != null">
+                AMMONIA_TY,
+            </if>
+            <if test="phosphorus != null">
+                PHOSPHORUS,
+            </if>
+            <if test="phosphorusSy != null">
+                PHOSPHORUS_SY,
+            </if>
+            <if test="phosphorusTy != null">
+                PHOSPHORUS_TY,
+            </if>
+            <if test="nitrogen != null">
+                NITROGEN,
+            </if>
+            <if test="nitrogenSy != null">
+                NITROGEN_SY,
+            </if>
+            <if test="nitrogenTy != null">
+                NITROGEN_TY,
+            </if>
+            <if test="copper != null">
+                COPPER,
+            </if>
+            <if test="copperSy != null">
+                COPPER_SY,
+            </if>
+            <if test="copperTy != null">
+                COPPER_TY,
+            </if>
+            <if test="zinc != null">
+                ZINC,
+            </if>
+            <if test="zincSy != null">
+                ZINC_SY,
+            </if>
+            <if test="zincTy != null">
+                ZINC_TY,
+            </if>
+            <if test="fluoride != null">
+                FLUORIDE,
+            </if>
+            <if test="fluorideSy != null">
+                FLUORIDE_SY,
+            </if>
+            <if test="fluorideTy != null">
+                FLUORIDE_TY,
+            </if>
+            <if test="selenium != null">
+                SELENIUM,
+            </if>
+            <if test="seleniumSy != null">
+                SELENIUM_SY,
+            </if>
+            <if test="seleniumTy != null">
+                SELENIUM_TY,
+            </if>
+            <if test="arsenic != null">
+                ARSENIC,
+            </if>
+            <if test="arsenicSy != null">
+                ARSENIC_SY,
+            </if>
+            <if test="arsenicTy != null">
+                ARSENIC_TY,
+            </if>
+            <if test="mercury != null">
+                MERCURY,
+            </if>
+            <if test="mercurySy != null">
+                MERCURY_SY,
+            </if>
+            <if test="mercuryTy != null">
+                MERCURY_TY,
+            </if>
+            <if test="cadmium != null">
+                CADMIUM,
+            </if>
+            <if test="cadmiumSy != null">
+                CADMIUM_SY,
+            </if>
+            <if test="cadmiumTy != null">
+                CADMIUM_TY,
+            </if>
+            <if test="chromium != null">
+                CHROMIUM,
+            </if>
+            <if test="chromiumSy != null">
+                CHROMIUM_SY,
+            </if>
+            <if test="chromiumTy != null">
+                CHROMIUM_TY,
+            </if>
+            <if test="lead != null">
+                LEAD,
+            </if>
+            <if test="leadSy != null">
+                LEAD_SY,
+            </if>
+            <if test="leadTy != null">
+                LEAD_TY,
+            </if>
+            <if test="cyanide != null">
+                CYANIDE,
+            </if>
+            <if test="cyanideSy != null">
+                CYANIDE_SY,
+            </if>
+            <if test="cyanideTy != null">
+                CYANIDE_TY,
+            </if>
+            <if test="phenol != null">
+                PHENOL,
+            </if>
+            <if test="phenolSy != null">
+                PHENOL_SY,
+            </if>
+            <if test="phenolTy != null">
+                PHENOL_TY,
+            </if>
+            <if test="petroleum != null">
+                PETROLEUM,
+            </if>
+            <if test="petroleumSy != null">
+                PETROLEUM_SY,
+            </if>
+            <if test="petroleumTy != null">
+                PETROLEUM_TY,
+            </if>
+            <if test="surfactant != null">
+                SURFACTANT,
+            </if>
+            <if test="surfactantSy != null">
+                SURFACTANT_SY,
+            </if>
+            <if test="surfactantTy != null">
+                SURFACTANT_TY,
+            </if>
+            <if test="sulfide != null">
+                SULFIDE,
+            </if>
+            <if test="sulfideSy != null">
+                SULFIDE_SY,
+            </if>
+            <if test="sulfideTy != null">
+                SULFIDE_TY,
+            </if>
+            <if test="coliform != null">
+                COLIFORM,
+            </if>
+            <if test="coliformSy != null">
+                COLIFORM_SY,
+            </if>
+            <if test="coliformTy != null">
+                COLIFORM_TY,
+            </if>
+            <if test="chlorA != null">
+                CHLOR_A,
+            </if>
+            <if test="chlorASy != null">
+                CHLOR_A_SY,
+            </if>
+            <if test="chlorATy != null">
+                CHLOR_A_TY,
+            </if>
+            <if test="transparency != null">
+                TRANSPARENCY,
+            </if>
+            <if test="transparencySy != null">
+                TRANSPARENCY_SY,
+            </if>
+            <if test="transparencyTy != null">
+                TRANSPARENCY_TY,
+            </if>
+            <if test="suspended != null">
+                SUSPENDED,
+            </if>
+            <if test="suspendedSy != null">
+                SUSPENDED_SY,
+            </if>
+            <if test="suspendedTy != null">
+                SUSPENDED_TY,
+            </if>
+            <if test="qaTy != null">
+                QA_TY,
+            </if>
+            <if test="monUnit != null">
+                MON_UNIT,
+            </if>
+            <if test="monitor != null">
+                MONITOR,
+            </if>
+            <if test="inputer != null">
+                INPUTER,
+            </if>
+            <if test="auditor != null">
+                AUDITOR,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME,
+            </if>
+            <if test="remarks != null">
+                REMARKS,
+            </if>
+            <if test="reportId != null">
+                REPORT_ID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="processId != null">
+                #{processId,jdbcType=VARCHAR},
+            </if>
+            <if test="secId != null">
+                #{secId,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorTime != null">
+                #{monitorTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="waterTemp != null">
+                #{waterTemp,jdbcType=FLOAT},
+            </if>
+            <if test="waterTempSy != null">
+                #{waterTempSy,jdbcType=VARCHAR},
+            </if>
+            <if test="waterTempTy != null">
+                #{waterTempTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phValue != null">
+                #{phValue,jdbcType=FLOAT},
+            </if>
+            <if test="phValueSy != null">
+                #{phValueSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phValueTy != null">
+                #{phValueTy,jdbcType=VARCHAR},
+            </if>
+            <if test="disOxygen != null">
+                #{disOxygen,jdbcType=FLOAT},
+            </if>
+            <if test="disOxygenSy != null">
+                #{disOxygenSy,jdbcType=VARCHAR},
+            </if>
+            <if test="disOxygenTy != null">
+                #{disOxygenTy,jdbcType=VARCHAR},
+            </if>
+            <if test="permanganate != null">
+                #{permanganate,jdbcType=FLOAT},
+            </if>
+            <if test="permanganateSy != null">
+                #{permanganateSy,jdbcType=VARCHAR},
+            </if>
+            <if test="permanganateTy != null">
+                #{permanganateTy,jdbcType=VARCHAR},
+            </if>
+            <if test="oxDemand != null">
+                #{oxDemand,jdbcType=FLOAT},
+            </if>
+            <if test="oxDemandSy != null">
+                #{oxDemandSy,jdbcType=VARCHAR},
+            </if>
+            <if test="oxDemandTy != null">
+                #{oxDemandTy,jdbcType=VARCHAR},
+            </if>
+            <if test="boDemand != null">
+                #{boDemand,jdbcType=FLOAT},
+            </if>
+            <if test="boDemandSy != null">
+                #{boDemandSy,jdbcType=VARCHAR},
+            </if>
+            <if test="boDemandTy != null">
+                #{boDemandTy,jdbcType=VARCHAR},
+            </if>
+            <if test="ammonia != null">
+                #{ammonia,jdbcType=FLOAT},
+            </if>
+            <if test="ammoniaSy != null">
+                #{ammoniaSy,jdbcType=VARCHAR},
+            </if>
+            <if test="ammoniaTy != null">
+                #{ammoniaTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phosphorus != null">
+                #{phosphorus,jdbcType=FLOAT},
+            </if>
+            <if test="phosphorusSy != null">
+                #{phosphorusSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phosphorusTy != null">
+                #{phosphorusTy,jdbcType=VARCHAR},
+            </if>
+            <if test="nitrogen != null">
+                #{nitrogen,jdbcType=FLOAT},
+            </if>
+            <if test="nitrogenSy != null">
+                #{nitrogenSy,jdbcType=VARCHAR},
+            </if>
+            <if test="nitrogenTy != null">
+                #{nitrogenTy,jdbcType=VARCHAR},
+            </if>
+            <if test="copper != null">
+                #{copper,jdbcType=FLOAT},
+            </if>
+            <if test="copperSy != null">
+                #{copperSy,jdbcType=VARCHAR},
+            </if>
+            <if test="copperTy != null">
+                #{copperTy,jdbcType=VARCHAR},
+            </if>
+            <if test="zinc != null">
+                #{zinc,jdbcType=FLOAT},
+            </if>
+            <if test="zincSy != null">
+                #{zincSy,jdbcType=VARCHAR},
+            </if>
+            <if test="zincTy != null">
+                #{zincTy,jdbcType=VARCHAR},
+            </if>
+            <if test="fluoride != null">
+                #{fluoride,jdbcType=FLOAT},
+            </if>
+            <if test="fluorideSy != null">
+                #{fluorideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="fluorideTy != null">
+                #{fluorideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="selenium != null">
+                #{selenium,jdbcType=FLOAT},
+            </if>
+            <if test="seleniumSy != null">
+                #{seleniumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="seleniumTy != null">
+                #{seleniumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="arsenic != null">
+                #{arsenic,jdbcType=FLOAT},
+            </if>
+            <if test="arsenicSy != null">
+                #{arsenicSy,jdbcType=VARCHAR},
+            </if>
+            <if test="arsenicTy != null">
+                #{arsenicTy,jdbcType=VARCHAR},
+            </if>
+            <if test="mercury != null">
+                #{mercury,jdbcType=FLOAT},
+            </if>
+            <if test="mercurySy != null">
+                #{mercurySy,jdbcType=VARCHAR},
+            </if>
+            <if test="mercuryTy != null">
+                #{mercuryTy,jdbcType=VARCHAR},
+            </if>
+            <if test="cadmium != null">
+                #{cadmium,jdbcType=FLOAT},
+            </if>
+            <if test="cadmiumSy != null">
+                #{cadmiumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="cadmiumTy != null">
+                #{cadmiumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="chromium != null">
+                #{chromium,jdbcType=FLOAT},
+            </if>
+            <if test="chromiumSy != null">
+                #{chromiumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="chromiumTy != null">
+                #{chromiumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="lead != null">
+                #{lead,jdbcType=FLOAT},
+            </if>
+            <if test="leadSy != null">
+                #{leadSy,jdbcType=VARCHAR},
+            </if>
+            <if test="leadTy != null">
+                #{leadTy,jdbcType=VARCHAR},
+            </if>
+            <if test="cyanide != null">
+                #{cyanide,jdbcType=FLOAT},
+            </if>
+            <if test="cyanideSy != null">
+                #{cyanideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="cyanideTy != null">
+                #{cyanideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phenol != null">
+                #{phenol,jdbcType=FLOAT},
+            </if>
+            <if test="phenolSy != null">
+                #{phenolSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phenolTy != null">
+                #{phenolTy,jdbcType=VARCHAR},
+            </if>
+            <if test="petroleum != null">
+                #{petroleum,jdbcType=FLOAT},
+            </if>
+            <if test="petroleumSy != null">
+                #{petroleumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="petroleumTy != null">
+                #{petroleumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="surfactant != null">
+                #{surfactant,jdbcType=FLOAT},
+            </if>
+            <if test="surfactantSy != null">
+                #{surfactantSy,jdbcType=VARCHAR},
+            </if>
+            <if test="surfactantTy != null">
+                #{surfactantTy,jdbcType=VARCHAR},
+            </if>
+            <if test="sulfide != null">
+                #{sulfide,jdbcType=FLOAT},
+            </if>
+            <if test="sulfideSy != null">
+                #{sulfideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="sulfideTy != null">
+                #{sulfideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="coliform != null">
+                #{coliform,jdbcType=FLOAT},
+            </if>
+            <if test="coliformSy != null">
+                #{coliformSy,jdbcType=VARCHAR},
+            </if>
+            <if test="coliformTy != null">
+                #{coliformTy,jdbcType=VARCHAR},
+            </if>
+            <if test="chlorA != null">
+                #{chlorA,jdbcType=FLOAT},
+            </if>
+            <if test="chlorASy != null">
+                #{chlorASy,jdbcType=VARCHAR},
+            </if>
+            <if test="chlorATy != null">
+                #{chlorATy,jdbcType=VARCHAR},
+            </if>
+            <if test="transparency != null">
+                #{transparency,jdbcType=FLOAT},
+            </if>
+            <if test="transparencySy != null">
+                #{transparencySy,jdbcType=VARCHAR},
+            </if>
+            <if test="transparencyTy != null">
+                #{transparencyTy,jdbcType=VARCHAR},
+            </if>
+            <if test="suspended != null">
+                #{suspended,jdbcType=FLOAT},
+            </if>
+            <if test="suspendedSy != null">
+                #{suspendedSy,jdbcType=VARCHAR},
+            </if>
+            <if test="suspendedTy != null">
+                #{suspendedTy,jdbcType=VARCHAR},
+            </if>
+            <if test="qaTy != null">
+                #{qaTy,jdbcType=VARCHAR},
+            </if>
+            <if test="monUnit != null">
+                #{monUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="monitor != null">
+                #{monitor,jdbcType=VARCHAR},
+            </if>
+            <if test="inputer != null">
+                #{inputer,jdbcType=VARCHAR},
+            </if>
+            <if test="auditor != null">
+                #{auditor,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="reportId != null">
+                #{reportId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.rdc.kingsa.model.entity.water.quality.WaterQualityFC">
+        update WATER_QUALITY_FC
+        <set>
+            <if test="processId != null">
+                PROCESS_ID = #{processId,jdbcType=VARCHAR},
+            </if>
+            <if test="secId != null">
+                SEC_ID = #{secId,jdbcType=VARCHAR},
+            </if>
+            <if test="monitorTime != null">
+                MONITOR_TIME = #{monitorTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="waterTemp != null">
+                WATER_TEMP = #{waterTemp,jdbcType=FLOAT},
+            </if>
+            <if test="waterTempSy != null">
+                WATER_TEMP_SY = #{waterTempSy,jdbcType=VARCHAR},
+            </if>
+            <if test="waterTempTy != null">
+                WATER_TEMP_TY = #{waterTempTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phValue != null">
+                PH_VALUE = #{phValue,jdbcType=FLOAT},
+            </if>
+            <if test="phValueSy != null">
+                PH_VALUE_SY = #{phValueSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phValueTy != null">
+                PH_VALUE_TY = #{phValueTy,jdbcType=VARCHAR},
+            </if>
+            <if test="disOxygen != null">
+                DIS_OXYGEN = #{disOxygen,jdbcType=FLOAT},
+            </if>
+            <if test="disOxygenSy != null">
+                DIS_OXYGEN_SY = #{disOxygenSy,jdbcType=VARCHAR},
+            </if>
+            <if test="disOxygenTy != null">
+                DIS_OXYGEN_TY = #{disOxygenTy,jdbcType=VARCHAR},
+            </if>
+            <if test="permanganate != null">
+                PERMANGANATE = #{permanganate,jdbcType=FLOAT},
+            </if>
+            <if test="permanganateSy != null">
+                PERMANGANATE_SY = #{permanganateSy,jdbcType=VARCHAR},
+            </if>
+            <if test="permanganateTy != null">
+                PERMANGANATE_TY = #{permanganateTy,jdbcType=VARCHAR},
+            </if>
+            <if test="oxDemand != null">
+                OX_DEMAND = #{oxDemand,jdbcType=FLOAT},
+            </if>
+            <if test="oxDemandSy != null">
+                OX_DEMAND_SY = #{oxDemandSy,jdbcType=VARCHAR},
+            </if>
+            <if test="oxDemandTy != null">
+                OX_DEMAND_TY = #{oxDemandTy,jdbcType=VARCHAR},
+            </if>
+            <if test="boDemand != null">
+                BO_DEMAND = #{boDemand,jdbcType=FLOAT},
+            </if>
+            <if test="boDemandSy != null">
+                BO_DEMAND_SY = #{boDemandSy,jdbcType=VARCHAR},
+            </if>
+            <if test="boDemandTy != null">
+                BO_DEMAND_TY = #{boDemandTy,jdbcType=VARCHAR},
+            </if>
+            <if test="ammonia != null">
+                AMMONIA = #{ammonia,jdbcType=FLOAT},
+            </if>
+            <if test="ammoniaSy != null">
+                AMMONIA_SY = #{ammoniaSy,jdbcType=VARCHAR},
+            </if>
+            <if test="ammoniaTy != null">
+                AMMONIA_TY = #{ammoniaTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phosphorus != null">
+                PHOSPHORUS = #{phosphorus,jdbcType=FLOAT},
+            </if>
+            <if test="phosphorusSy != null">
+                PHOSPHORUS_SY = #{phosphorusSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phosphorusTy != null">
+                PHOSPHORUS_TY = #{phosphorusTy,jdbcType=VARCHAR},
+            </if>
+            <if test="nitrogen != null">
+                NITROGEN = #{nitrogen,jdbcType=FLOAT},
+            </if>
+            <if test="nitrogenSy != null">
+                NITROGEN_SY = #{nitrogenSy,jdbcType=VARCHAR},
+            </if>
+            <if test="nitrogenTy != null">
+                NITROGEN_TY = #{nitrogenTy,jdbcType=VARCHAR},
+            </if>
+            <if test="copper != null">
+                COPPER = #{copper,jdbcType=FLOAT},
+            </if>
+            <if test="copperSy != null">
+                COPPER_SY = #{copperSy,jdbcType=VARCHAR},
+            </if>
+            <if test="copperTy != null">
+                COPPER_TY = #{copperTy,jdbcType=VARCHAR},
+            </if>
+            <if test="zinc != null">
+                ZINC = #{zinc,jdbcType=FLOAT},
+            </if>
+            <if test="zincSy != null">
+                ZINC_SY = #{zincSy,jdbcType=VARCHAR},
+            </if>
+            <if test="zincTy != null">
+                ZINC_TY = #{zincTy,jdbcType=VARCHAR},
+            </if>
+            <if test="fluoride != null">
+                FLUORIDE = #{fluoride,jdbcType=FLOAT},
+            </if>
+            <if test="fluorideSy != null">
+                FLUORIDE_SY = #{fluorideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="fluorideTy != null">
+                FLUORIDE_TY = #{fluorideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="selenium != null">
+                SELENIUM = #{selenium,jdbcType=FLOAT},
+            </if>
+            <if test="seleniumSy != null">
+                SELENIUM_SY = #{seleniumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="seleniumTy != null">
+                SELENIUM_TY = #{seleniumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="arsenic != null">
+                ARSENIC = #{arsenic,jdbcType=FLOAT},
+            </if>
+            <if test="arsenicSy != null">
+                ARSENIC_SY = #{arsenicSy,jdbcType=VARCHAR},
+            </if>
+            <if test="arsenicTy != null">
+                ARSENIC_TY = #{arsenicTy,jdbcType=VARCHAR},
+            </if>
+            <if test="mercury != null">
+                MERCURY = #{mercury,jdbcType=FLOAT},
+            </if>
+            <if test="mercurySy != null">
+                MERCURY_SY = #{mercurySy,jdbcType=VARCHAR},
+            </if>
+            <if test="mercuryTy != null">
+                MERCURY_TY = #{mercuryTy,jdbcType=VARCHAR},
+            </if>
+            <if test="cadmium != null">
+                CADMIUM = #{cadmium,jdbcType=FLOAT},
+            </if>
+            <if test="cadmiumSy != null">
+                CADMIUM_SY = #{cadmiumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="cadmiumTy != null">
+                CADMIUM_TY = #{cadmiumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="chromium != null">
+                CHROMIUM = #{chromium,jdbcType=FLOAT},
+            </if>
+            <if test="chromiumSy != null">
+                CHROMIUM_SY = #{chromiumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="chromiumTy != null">
+                CHROMIUM_TY = #{chromiumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="lead != null">
+                LEAD = #{lead,jdbcType=FLOAT},
+            </if>
+            <if test="leadSy != null">
+                LEAD_SY = #{leadSy,jdbcType=VARCHAR},
+            </if>
+            <if test="leadTy != null">
+                LEAD_TY = #{leadTy,jdbcType=VARCHAR},
+            </if>
+            <if test="cyanide != null">
+                CYANIDE = #{cyanide,jdbcType=FLOAT},
+            </if>
+            <if test="cyanideSy != null">
+                CYANIDE_SY = #{cyanideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="cyanideTy != null">
+                CYANIDE_TY = #{cyanideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="phenol != null">
+                PHENOL = #{phenol,jdbcType=FLOAT},
+            </if>
+            <if test="phenolSy != null">
+                PHENOL_SY = #{phenolSy,jdbcType=VARCHAR},
+            </if>
+            <if test="phenolTy != null">
+                PHENOL_TY = #{phenolTy,jdbcType=VARCHAR},
+            </if>
+            <if test="petroleum != null">
+                PETROLEUM = #{petroleum,jdbcType=FLOAT},
+            </if>
+            <if test="petroleumSy != null">
+                PETROLEUM_SY = #{petroleumSy,jdbcType=VARCHAR},
+            </if>
+            <if test="petroleumTy != null">
+                PETROLEUM_TY = #{petroleumTy,jdbcType=VARCHAR},
+            </if>
+            <if test="surfactant != null">
+                SURFACTANT = #{surfactant,jdbcType=FLOAT},
+            </if>
+            <if test="surfactantSy != null">
+                SURFACTANT_SY = #{surfactantSy,jdbcType=VARCHAR},
+            </if>
+            <if test="surfactantTy != null">
+                SURFACTANT_TY = #{surfactantTy,jdbcType=VARCHAR},
+            </if>
+            <if test="sulfide != null">
+                SULFIDE = #{sulfide,jdbcType=FLOAT},
+            </if>
+            <if test="sulfideSy != null">
+                SULFIDE_SY = #{sulfideSy,jdbcType=VARCHAR},
+            </if>
+            <if test="sulfideTy != null">
+                SULFIDE_TY = #{sulfideTy,jdbcType=VARCHAR},
+            </if>
+            <if test="coliform != null">
+                COLIFORM = #{coliform,jdbcType=FLOAT},
+            </if>
+            <if test="coliformSy != null">
+                COLIFORM_SY = #{coliformSy,jdbcType=VARCHAR},
+            </if>
+            <if test="coliformTy != null">
+                COLIFORM_TY = #{coliformTy,jdbcType=VARCHAR},
+            </if>
+            <if test="chlorA != null">
+                CHLOR_A = #{chlorA,jdbcType=FLOAT},
+            </if>
+            <if test="chlorASy != null">
+                CHLOR_A_SY = #{chlorASy,jdbcType=VARCHAR},
+            </if>
+            <if test="chlorATy != null">
+                CHLOR_A_TY = #{chlorATy,jdbcType=VARCHAR},
+            </if>
+            <if test="transparency != null">
+                TRANSPARENCY = #{transparency,jdbcType=FLOAT},
+            </if>
+            <if test="transparencySy != null">
+                TRANSPARENCY_SY = #{transparencySy,jdbcType=VARCHAR},
+            </if>
+            <if test="transparencyTy != null">
+                TRANSPARENCY_TY = #{transparencyTy,jdbcType=VARCHAR},
+            </if>
+            <if test="suspended != null">
+                SUSPENDED = #{suspended,jdbcType=FLOAT},
+            </if>
+            <if test="suspendedSy != null">
+                SUSPENDED_SY = #{suspendedSy,jdbcType=VARCHAR},
+            </if>
+            <if test="suspendedTy != null">
+                SUSPENDED_TY = #{suspendedTy,jdbcType=VARCHAR},
+            </if>
+            <if test="qaTy != null">
+                QA_TY = #{qaTy,jdbcType=VARCHAR},
+            </if>
+            <if test="monUnit != null">
+                MON_UNIT = #{monUnit,jdbcType=VARCHAR},
+            </if>
+            <if test="monitor != null">
+                MONITOR = #{monitor,jdbcType=VARCHAR},
+            </if>
+            <if test="inputer != null">
+                INPUTER = #{inputer,jdbcType=VARCHAR},
+            </if>
+            <if test="auditor != null">
+                AUDITOR = #{auditor,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                REMARKS = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="reportId != null">
+                REPORT_ID = #{reportId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="com.rdc.kingsa.model.entity.water.quality.WaterQualityFC">
+        UPDATE WATER_QUALITY_FC
+        SET PROCESS_ID      = #{processId,jdbcType=VARCHAR},
+            SEC_ID          = #{secId,jdbcType=VARCHAR},
+            MONITOR_TIME    = #{monitorTime,jdbcType=TIMESTAMP},
+            WATER_TEMP      = #{waterTemp,jdbcType=FLOAT},
+            WATER_TEMP_SY   = #{waterTempSy,jdbcType=VARCHAR},
+            WATER_TEMP_TY   = #{waterTempTy,jdbcType=VARCHAR},
+            PH_VALUE        = #{phValue,jdbcType=FLOAT},
+            PH_VALUE_SY     = #{phValueSy,jdbcType=VARCHAR},
+            PH_VALUE_TY     = #{phValueTy,jdbcType=VARCHAR},
+            DIS_OXYGEN      = #{disOxygen,jdbcType=FLOAT},
+            DIS_OXYGEN_SY   = #{disOxygenSy,jdbcType=VARCHAR},
+            DIS_OXYGEN_TY   = #{disOxygenTy,jdbcType=VARCHAR},
+            PERMANGANATE    = #{permanganate,jdbcType=FLOAT},
+            PERMANGANATE_SY = #{permanganateSy,jdbcType=VARCHAR},
+            PERMANGANATE_TY = #{permanganateTy,jdbcType=VARCHAR},
+            OX_DEMAND       = #{oxDemand,jdbcType=FLOAT},
+            OX_DEMAND_SY    = #{oxDemandSy,jdbcType=VARCHAR},
+            OX_DEMAND_TY    = #{oxDemandTy,jdbcType=VARCHAR},
+            BO_DEMAND       = #{boDemand,jdbcType=FLOAT},
+            BO_DEMAND_SY    = #{boDemandSy,jdbcType=VARCHAR},
+            BO_DEMAND_TY    = #{boDemandTy,jdbcType=VARCHAR},
+            AMMONIA         = #{ammonia,jdbcType=FLOAT},
+            AMMONIA_SY      = #{ammoniaSy,jdbcType=VARCHAR},
+            AMMONIA_TY      = #{ammoniaTy,jdbcType=VARCHAR},
+            PHOSPHORUS      = #{phosphorus,jdbcType=FLOAT},
+            PHOSPHORUS_SY   = #{phosphorusSy,jdbcType=VARCHAR},
+            PHOSPHORUS_TY   = #{phosphorusTy,jdbcType=VARCHAR},
+            NITROGEN        = #{nitrogen,jdbcType=FLOAT},
+            NITROGEN_SY     = #{nitrogenSy,jdbcType=VARCHAR},
+            NITROGEN_TY     = #{nitrogenTy,jdbcType=VARCHAR},
+            COPPER          = #{copper,jdbcType=FLOAT},
+            COPPER_SY       = #{copperSy,jdbcType=VARCHAR},
+            COPPER_TY       = #{copperTy,jdbcType=VARCHAR},
+            ZINC            = #{zinc,jdbcType=FLOAT},
+            ZINC_SY         = #{zincSy,jdbcType=VARCHAR},
+            ZINC_TY         = #{zincTy,jdbcType=VARCHAR},
+            FLUORIDE        = #{fluoride,jdbcType=FLOAT},
+            FLUORIDE_SY     = #{fluorideSy,jdbcType=VARCHAR},
+            FLUORIDE_TY     = #{fluorideTy,jdbcType=VARCHAR},
+            SELENIUM        = #{selenium,jdbcType=FLOAT},
+            SELENIUM_SY     = #{seleniumSy,jdbcType=VARCHAR},
+            SELENIUM_TY     = #{seleniumTy,jdbcType=VARCHAR},
+            ARSENIC         = #{arsenic,jdbcType=FLOAT},
+            ARSENIC_SY      = #{arsenicSy,jdbcType=VARCHAR},
+            ARSENIC_TY      = #{arsenicTy,jdbcType=VARCHAR},
+            MERCURY         = #{mercury,jdbcType=FLOAT},
+            MERCURY_SY      = #{mercurySy,jdbcType=VARCHAR},
+            MERCURY_TY      = #{mercuryTy,jdbcType=VARCHAR},
+            CADMIUM         = #{cadmium,jdbcType=FLOAT},
+            CADMIUM_SY      = #{cadmiumSy,jdbcType=VARCHAR},
+            CADMIUM_TY      = #{cadmiumTy,jdbcType=VARCHAR},
+            CHROMIUM        = #{chromium,jdbcType=FLOAT},
+            CHROMIUM_SY     = #{chromiumSy,jdbcType=VARCHAR},
+            CHROMIUM_TY     = #{chromiumTy,jdbcType=VARCHAR},
+            LEAD            = #{lead,jdbcType=FLOAT},
+            LEAD_SY         = #{leadSy,jdbcType=VARCHAR},
+            LEAD_TY         = #{leadTy,jdbcType=VARCHAR},
+            CYANIDE         = #{cyanide,jdbcType=FLOAT},
+            CYANIDE_SY      = #{cyanideSy,jdbcType=VARCHAR},
+            CYANIDE_TY      = #{cyanideTy,jdbcType=VARCHAR},
+            PHENOL          = #{phenol,jdbcType=FLOAT},
+            PHENOL_SY       = #{phenolSy,jdbcType=VARCHAR},
+            PHENOL_TY       = #{phenolTy,jdbcType=VARCHAR},
+            PETROLEUM       = #{petroleum,jdbcType=FLOAT},
+            PETROLEUM_SY    = #{petroleumSy,jdbcType=VARCHAR},
+            PETROLEUM_TY    = #{petroleumTy,jdbcType=VARCHAR},
+            SURFACTANT      = #{surfactant,jdbcType=FLOAT},
+            SURFACTANT_SY   = #{surfactantSy,jdbcType=VARCHAR},
+            SURFACTANT_TY   = #{surfactantTy,jdbcType=VARCHAR},
+            SULFIDE         = #{sulfide,jdbcType=FLOAT},
+            SULFIDE_SY      = #{sulfideSy,jdbcType=VARCHAR},
+            SULFIDE_TY      = #{sulfideTy,jdbcType=VARCHAR},
+            COLIFORM        = #{coliform,jdbcType=FLOAT},
+            COLIFORM_SY     = #{coliformSy,jdbcType=VARCHAR},
+            COLIFORM_TY     = #{coliformTy,jdbcType=VARCHAR},
+            CHLOR_A         = #{chlorA,jdbcType=FLOAT},
+            CHLOR_A_SY      = #{chlorASy,jdbcType=VARCHAR},
+            CHLOR_A_TY      = #{chlorATy,jdbcType=VARCHAR},
+            TRANSPARENCY    = #{transparency,jdbcType=FLOAT},
+            TRANSPARENCY_SY = #{transparencySy,jdbcType=VARCHAR},
+            TRANSPARENCY_TY = #{transparencyTy,jdbcType=VARCHAR},
+            SUSPENDED       = #{suspended,jdbcType=FLOAT},
+            SUSPENDED_SY    = #{suspendedSy,jdbcType=VARCHAR},
+            SUSPENDED_TY    = #{suspendedTy,jdbcType=VARCHAR},
+            QA_TY           = #{qaTy,jdbcType=VARCHAR},
+            MON_UNIT        = #{monUnit,jdbcType=VARCHAR},
+            MONITOR         = #{monitor,jdbcType=VARCHAR},
+            INPUTER         = #{inputer,jdbcType=VARCHAR},
+            AUDITOR         = #{auditor,jdbcType=VARCHAR},
+            CREATE_TIME     = #{createTime,jdbcType=TIMESTAMP},
+            MODIFY_TIME     = #{modifyTime,jdbcType=TIMESTAMP},
+            REMARKS         = #{remarks,jdbcType=VARCHAR},
+            REPORT_ID       = #{reportId,jdbcType=VARCHAR}
+        WHERE ID = #{id,jdbcType=VARCHAR}
+    </update>
+    <!--custom methods-->
+    <select id="selectByReportId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        FROM WATER_QUALITY_FC WHERE REPORT_ID = #{reportId,jdbcType=VARCHAR}
+    </select>
+</mapper>
