@@ -20,6 +20,16 @@
      http://www.springframework.org/schema/context
      http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
+
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <bean id="conversion-com.rdc.kingsa.service"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+
     <mvc:annotation-driven validator="validator"
                            conversion-service="conversion-com.rdc.kingsa.service">
         <mvc:message-converters>
@@ -61,10 +71,11 @@
 
     <mvc:default-servlet-handler/>
 
-    <context:component-scan base-package="com.rdc.kingsa.controller,com.rdc.kingsa.security"/>
+    <context:component-scan base-package="com.rdc.kingsa.input.controller"/>
 
-    <!-- 静态资源访问（不拦截此目录下的东西的访问） -->
-    <!--<mvc:resources mapping="/swagger/**" location="/swagger/"/>-->
+    <!-- Enables swgger ui-->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
     <bean class="com.rdc.kingsa.config.SwaggerConfig"/>
 
@@ -74,15 +85,6 @@
             <value>messages</value>
         </property>
     </bean>
-
-    <bean id="validator"
-          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
-        <property name="validationMessageSource" ref="messageSource"/>
-    </bean>
-
-    <bean id="conversion-com.rdc.kingsa.service"
-          class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
