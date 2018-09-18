@@ -1,4 +1,4 @@
-package constant;
+package com.rdc.kingsa.constant;
 
 /**
  * Created by lxf on 18/9/14.

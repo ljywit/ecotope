@@ -1,8 +1,8 @@
 package com.rdc.kingsa.service;
 
+import com.rdc.kingsa.constant.EstimateTypes;
 import com.rdc.kingsa.model.bo.water.quality.WaterQualityEstimateBO;
 import com.rdc.kingsa.model.entity.water.quality.WaterQualityMIBase;
-import constant.EstimateTypes;
 import com.rdc.kingsa.service.inf.Estimate;
 import com.rdc.kingsa.utils.DrainStandard;
 import com.rdc.kingsa.utils.EstimateStandardUtil;
