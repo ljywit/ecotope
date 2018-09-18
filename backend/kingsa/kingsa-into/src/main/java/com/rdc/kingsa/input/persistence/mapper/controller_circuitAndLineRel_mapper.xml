@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fiberhome.store.dao.snc.ICircuitAndLineRelDaoExt">
+    <!-- resultMap映射 -->
+    <resultMap id="resultMap" type="com.fiberhome.store.bean.snc.CircuitAndLineRel">
+        <id column="UUID" jdbcType="VARCHAR" property="uuid"/>
+        <result column="CIRCUIT_ID" jdbcType="INTEGER" property="circuitId"/>
+        <result column="SEND_NE_ID" jdbcType="INTEGER" property="sendNeId"/>
+        <result column="SEND_BOARD_ID" jdbcType="INTEGER" property="sendBoardId"/>
+        <result column="SEND_LINE_NO" jdbcType="INTEGER" property="sendLineNo"/>
+        <result column="SEND_LINE_TAG" jdbcType="VARCHAR" property="sendLineTag"/>
+        <result column="REC_NE_ID" jdbcType="INTEGER" property="recNeId"/>
+        <result column="REC_BOARD_ID" jdbcType="INTEGER" property="recBoardId"/>
+        <result column="REC_LINE_NO" jdbcType="INTEGER" property="recLineNo"/>
+        <result column="REC_LINE_TAG" jdbcType="VARCHAR" property="recLineTag"/>
+        <result column="SNC_TYPE" jdbcType="INTEGER" property="sncType"/>
+        <result column="SEND_REVERSE_FLAG" jdbcType="INTEGER" property="sendReverseFlag"/>
+        <result column="REC_REVERSE_FLAG" jdbcType="INTEGER" property="recReverseFlag"/>
+    </resultMap>
+    <!-- 基本列 -->
+    <sql id="Base_Column_List">
+        UUID,CIRCUIT_ID,send_ne_id,SEND_BOARD_ID,SEND_LINE_NO,SEND_LINE_TAG,rec_ne_id,REC_BOARD_ID,REC_LINE_NO,REC_LINE_TAG,SNC_TYPE,SEND_REVERSE_FLAG,REC_REVERSE_FLAG
+    </sql>
+
+    <!-- 插入 useGeneratedKeys="true" -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="uuid">
+        INSERT
+        INTO CIRCUIT_AND_LINE_REL (
+        <include refid="Base_Column_List"/>
+        ) VALUES (
+        #{uuid},
+        #{circuitId},
+        #{sendNeId},
+        #{sendBoardId},
+        #{sendLineNo},
+        #{sendLineTag},
+        #{recNeId},
+        #{recBoardId},
+        #{recLineNo},
+        #{recLineTag},
+        #{sncType},
+        #{sendReverseFlag},
+        #{recReverseFlag}
+        )
+    </insert>
+
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="uuid">
+        insert into CIRCUIT_AND_LINE_REL (
+        <include refid="Base_Column_List"/>
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.circuitId},
+            #{item.sendNeId},
+            #{item.sendBoardId},
+            #{item.sendLineNo},
+            #{item.sendLineTag},
+            #{item.recNeId},
+            #{item.recBoardId},
+            #{item.recLineNo},
+            #{item.recLineTag},
+            #{item.sncType},
+            #{item.sendReverseFlag},
+            #{item.recReverseFlag}
+            )
+        </foreach>
+    </insert>
+	
+	<!-- 批量插入，数据存在时更新旧记录 -->
+	<insert id="mergeBatch" useGeneratedKeys="true" keyProperty="uuid">
+        insert into CIRCUIT_AND_LINE_REL (
+        <include refid="Base_Column_List"/>
+        )
+        values 
+        <foreach collection="circuitList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.circuitId},
+            #{item.sendNeId},
+            #{item.sendBoardId},
+            #{item.sendLineNo},
+            #{item.sendLineTag},
+            #{item.recNeId},
+            #{item.recBoardId},
+            #{item.recLineNo},
+            #{item.recLineTag},
+            #{item.sncType},
+            #{item.sendReverseFlag},
+            #{item.recReverseFlag}
+            )
+        </foreach> 
+		on duplicate key update 
+		<include refid="Update_Column_List"/>
+    </insert>
+	
+	<!-- 更新列 -->
+    <sql id="Update_Column_List">
+        UUID = values(UUID),
+		CIRCUIT_ID = values(CIRCUIT_ID),
+		send_ne_id = values(send_ne_id),
+		SEND_BOARD_ID = values(SEND_BOARD_ID),
+		SEND_LINE_NO = values(SEND_LINE_NO),
+		SEND_LINE_TAG = values(SEND_LINE_TAG),
+		rec_ne_id = values(rec_ne_id),
+		REC_BOARD_ID = values(REC_BOARD_ID),
+		REC_LINE_NO = values(REC_LINE_NO),
+		REC_LINE_TAG = values(REC_LINE_TAG),
+		SNC_TYPE = values(SNC_TYPE),
+		SEND_REVERSE_FLAG = values(SEND_REVERSE_FLAG),
+		REC_REVERSE_FLAG = values(REC_REVERSE_FLAG)
+    </sql>
+
+    <!-- 删除 -->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from CIRCUIT_AND_LINE_REL
+        where UUID = #{uuid}
+    </delete>
+	
+	<delete id="deleteByCircuits">
+        delete from CIRCUIT_AND_LINE_REL
+        <where>
+            CIRCUIT_ID IN
+            <foreach collection="circuits" separator="," open="(" item="circuit" index="index" close=")">
+                #{circuit}
+            </foreach>
+        </where>
+    </delete>
+	
+	<delete id="deleteByIds">
+        delete from CIRCUIT_AND_LINE_REL
+        <where>
+            UUID IN
+            <foreach collection="ids" separator="," open="(" item="id" index="index" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </delete>	
+
+    <!-- 通过主键查询 -->
+    <select id="load" parameterType="java.lang.String" resultMap="resultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM CIRCUIT_AND_LINE_REL
+        WHERE UUID = #{id} limit 1
+    </select>
+    <!--通过主键查询-->
+    <select id="loadByUUID" parameterType="java.lang.String" resultMap="resultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM CIRCUIT_AND_LINE_REL
+        WHERE UUID = #{uuid}
+    </select>
+    <!-- 更新，if -->
+    <update id="update" parameterType="com.fiberhome.store.bean.snc.CircuitAndLineRel">
+        UPDATE CIRCUIT_AND_LINE_REL
+        <set>
+            <include refid="set_for_update"/>
+        </set>
+        WHERE UUID = #{uuid}
+    </update>
+    <update id="updateSelective" parameterType="com.fiberhome.store.bean.snc.CircuitAndLineRel">
+        UPDATE CIRCUIT_AND_LINE_REL
+        <set>
+            <include refid="set_for_update"/>
+        </set>
+        WHERE CIRCUIT_ID = #{circuitId}
+    </update>
+    <select id="findPageBreakByCondition" resultMap="resultMap"
+            parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+        <!-- where条件 -->
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <include refid="where_for_query"/>
+        </trim>
+
+    </select>
+    <select id="findPageByBean" resultMap="resultMap"
+            parameterType="com.fiberhome.store.bean.snc.CircuitAndLineRel">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+        <!-- where条件 -->
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <include refid="where_for_query"/>
+        </trim>
+    </select>
+	<!--查询APP创建的所有SSPW对象-->
+    <select id="queryAllSdnCAL" resultMap="resultMap"
+            parameterType="com.fiberhome.store.bean.snc.CircuitAndLineRel">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+        where UUID in (select uuid from    SNC_PW where create_user =
+        '${@com.fiberhome.common.constant.StoreConstant@FROM_APP}')
+    </select>
+	<!--查询所有没和SSPW保持一致的对象-->
+    <select id="querySyncDeleteCircuitId" resultType="java.lang.Integer">
+        SELECT 
+		  distinct CIRCUIT_ID 
+		FROM
+		  CIRCUIT_AND_LINE_REL 
+		WHERE UUID NOT IN 
+		  (SELECT 
+			UUID
+		  FROM
+			   SNC_PW 
+		  WHERE PW_TYPE = '${@com.fiberhome.common.constant.StoreConstant@SSPW}')
+		AND UUID NOT IN 
+		  (SELECT 
+			UUID
+		  FROM
+			SNC_PMTHRES_LOG)
+    </select>
+	<!--查询所有没和SSPW保持一致的对象-->
+    <select id="querySyncCreateCircuitId" resultType="java.lang.Integer">
+        SELECT DISTINCT 
+          ID 
+        FROM
+             SNC_PW t1 
+        WHERE PW_TYPE = 'SSPW' 
+          AND NOT EXISTS 
+          (SELECT 
+            UUID 
+          FROM
+            CIRCUIT_AND_LINE_REL t2 
+          WHERE t1.UUID = t2.UUID)
+    </select>
+    <select id="queryByIds" resultMap="resultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+        <where>
+            UUID IN
+            <foreach collection="ids" separator="," open="(" item="id" index="index" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+    <select id="queryByCircuitIds" resultMap="resultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+        <where>
+            CIRCUIT_ID IN
+            <foreach collection="ids" separator="," open="(" item="id" index="index" close=")">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+    <select id="findAll" resultMap="resultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from CIRCUIT_AND_LINE_REL
+    </select>
+    <select id="findAllIds" resultType="java.lang.String">
+        select distinct UUID from CIRCUIT_AND_LINE_REL
+    </select>
+    <!-- 查询AC点为Ingress的ElineId和电路ID之间的关系-->
+    <select id="loadL2Vpn2Pw" resultMap="resultMap" >
+        SELECT
+        v2p.L2VPN_UUID AS UUID,
+        c2l.CIRCUIT_ID AS CIRCUIT_ID,
+        SEND_BOARD_ID,
+        SEND_LINE_NO,
+        SEND_LINE_TAG,
+        SEND_REVERSE_FLAG,
+        REC_BOARD_ID,
+        REC_LINE_NO,
+        REC_LINE_TAG,
+        REC_REVERSE_FLAG
+        FROM
+        SNC_L2ACCESS ac,
+        SNC_L2VPN2PW v2p,
+           SNC_PW pw,
+        CIRCUIT_AND_LINE_REL c2l
+        WHERE
+        <if test="l2vpnUuid !=null and l2vpnUuid !=''">
+            v2p.L2VPN_UUID = #{l2vpnUuid} AND
+        </if>
+        <if test="acId !=null and acId !=''">
+            ac.UUID = #{acId} AND
+        </if>
+        <if test="acId ==null or acId ==''">
+            ac.TYPE = 'INGRESS' AND
+        </if>
+        pw.PW_TYPE = 'SSPW'
+        AND ac.L2VPN_SNC_ID = v2p.L2VPN_UUID
+        AND ac.NE_ID = pw.SOURCE_NE_ID
+        AND v2p.PW_UUID = pw.UUID
+        AND pw.UUID = c2l.UUID
+        UNION
+        ALL
+        SELECT
+        ac.L2VPN_SNC_ID AS l2vpnId,
+        pw.ID AS circuitId,
+        SEND_BOARD_ID AS sendBoardId,
+        SEND_LINE_NO AS sendLineNo,
+        SEND_LINE_TAG AS sendLineTag,
+        SEND_REVERSE_FLAG AS sendFlag,
+        REC_BOARD_ID AS recBoardId,
+        REC_LINE_NO AS recLineNo,
+        REC_LINE_TAG AS recLineTag,
+        REC_REVERSE_FLAG AS recFlag
+        FROM
+        SNC_L2ACCESS ac,
+           SNC_PW pw,
+        SNC_PW2PWTRAIL p2p,
+        CIRCUIT_AND_LINE_REL c2l,
+        (SELECT
+        v2p.PW_UUID AS pwId,
+        v2p.L2VPN_UUID AS l2vpnId,
+        v2p.PW_CIRCUIT_ID AS circuitId
+        FROM
+        SNC_L2VPN2PW v2p,
+           SNC_PW pw
+        WHERE pw.PW_TYPE = 'MSPW'
+        AND v2p.PW_UUID = pw.UUID
+        <if test="l2vpnUuid !=null and l2vpnUuid !=''">
+            AND v2p.L2VPN_UUID = #{l2vpnUuid}
+        </if>
+        ) mspws
+        WHERE
+        <if test="acId !=null and acId !=''">
+            ac.UUID = #{acId}
+        </if>
+        <if test="acId ==null or acId ==''">
+            ac.TYPE = 'INGRESS'
+        </if>
+        AND mspws.pwId = p2p.PWTRAIL_UUID
+        AND pw.UUID = p2p.PW_UUID
+        AND ac.L2VPN_SNC_ID = mspws.l2vpnId
+        AND ac.NE_ID = pw.SOURCE_NE_ID
+        AND pw.UUID = c2l.UUID
+    </select>
+    <sql id="set_for_update">
+        <if test="uuid != null">
+            UUID = #{uuid},
+        </if>
+        <if test="circuitId !=null">
+            CIRCUIT_ID = #{circuitId},
+        </if>
+        <if test="sendNeId !=null">
+            SEND_NE_ID = #{sendNeId},
+        </if>
+        <if test="sendBoardId !=null">
+            SEND_BOARD_ID = #{sendBoardId},
+        </if>
+        <if test="sendLineNo !=null">
+            SEND_LINE_NO = #{sendLineNo},
+        </if>
+        <if test="sendLineTag!=null">
+            SEND_LINE_TAG = #{sendLineTag},
+        </if>
+        <if test="recNeId !=null">
+            REC_NE_ID = #{recNeId},
+        </if>
+        <if test="recBoardId !=null">
+            REC_BOARD_ID = #{recBoardId},
+        </if>
+        <if test="recLineNo !=null">
+            REC_LINE_NO = #{recLineNo},
+        </if>
+        <if test="recLineTag!=null">
+            REC_LINE_TAG = #{recLineTag},
+        </if>
+        <if test="sncType!=null">
+            SNC_TYPE = #{sncType},
+        </if>
+        <if test="sendReverseFlag!= null">
+            SEND_REVERSE_FLAG = #{sendReverseFlag},
+        </if>
+        <if test="recReverseFlag!= null">
+            REC_REVERSE_FLAG = #{recReverseFlag},
+        </if>
+    </sql>
+    <sql id="where_for_query">
+        <if test="uuid != null">
+            AND UUID = #{uuid}
+        </if>
+        <if test="circuitId !=null">
+            AND CIRCUIT_ID = #{circuitId}
+        </if>
+        <if test="sendNeId !=null">
+            AND SEND_NE_ID = #{sendNeId}
+        </if>
+        <if test="sendBoardId !=null">
+            AND SEND_BOARD_ID = #{sendBoardId}
+        </if>
+        <if test="sendLineNo !=null">
+            AND SEND_LINE_NO = #{sendLineNo}
+        </if>
+        <if test="sendLineTag!=null">
+            AND SEND_LINE_TAG = #{sendLineTag}
+        </if>
+        <if test="recNeId !=null">
+            AND REC_NE_ID = #{recNeId}
+        </if>
+        <if test="recBoardId !=null">
+            AND REC_BOARD_ID = #{recBoardId}
+        </if>
+        <if test="recLineNo !=null">
+            AND REC_LINE_NO = #{recLineNo}
+        </if>
+        <if test="recLineTag!=null">
+            AND REC_LINE_TAG = #{recLineTag}
+        </if>
+        <if test="sncType!=null">
+            AND SNC_TYPE = #{sncType}
+        </if>
+        <if test="sendReverseFlag!= null">
+            AND SEND_REVERSE_FLAG = #{sendReverseFlag}
+        </if>
+        <if test="recReverseFlag!= null">
+            AND REC_REVERSE_FLAG = #{recReverseFlag}
+        </if>
+    </sql>
+</mapper>

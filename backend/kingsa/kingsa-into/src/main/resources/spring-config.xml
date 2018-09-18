@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 引入属性配置文件 -->
+    <bean name="propertys" class="com.rdc.kingsa.input.thirds.spring.config.PropertyConfigurer">
+        <property name="locations">
+            <list>
+                <!-- 数据库配置 -->
+                <value>classpath:config/jdbc.properties</value>
+                <!-- 接口相关配置 -->
+                <value>classpath:config/server/config.properties</value>
+                <!-- 接口返回码描述文字 -->
+                <value>classpath:config/server/message_zh.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding">
+            <value>GBK</value>
+        </property>
+    </bean>
+
+    <!-- 引入SPRING配置文件 -->
+    <import resource="spring/spring-*.xml"/>
+
+    <!--<bean class="com.InitDataListener">-->
+    <!--</bean>-->
+
+</beans>
