@@ -1,10 +1,9 @@
 package com.base.dal.mybatis;
 
-import java.util.List;
-
+import com.base.dal.object.AbstractDO;
 import org.apache.ibatis.session.RowBounds;
 
-import com.base.dal.object.AbstractDO;
+import java.util.List;
 
 /**
  * 数据访问层接口
@@ -17,7 +16,7 @@ import com.base.dal.object.AbstractDO;
 public interface BaseDao<T extends AbstractDO, PK extends java.io.Serializable> {
 
 	/** 插入 */
-	Integer insert(T model) throws Exception;
+	int insert(T model) throws Exception;
 
 	/**
 	 * 删除
