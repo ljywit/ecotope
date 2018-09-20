@@ -45,11 +45,11 @@
     </build>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.rdc.kingsa</groupId>
             <artifactId>com.rdc.kingsa.common</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- servlet-->
         <dependency>

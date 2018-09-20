@@ -28,8 +28,11 @@
 		<property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
 		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
 		<property name="testOnReturn" value="${jdbc.testOnReturn}" />
+		<property name="poolPreparedStatements" value="true"/>
+		<property name="maxOpenPreparedStatements" value="20"/>
 		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="${jdbc.filters}" />
+		<property name="filters" value="${jdbc.filters}"/>
+
 	</bean>
 
 </beans>
