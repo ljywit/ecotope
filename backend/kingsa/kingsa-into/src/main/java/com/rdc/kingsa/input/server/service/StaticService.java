@@ -2,11 +2,16 @@ package com.rdc.kingsa.input.server.service;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.rdc.kingsa.input.common.constant.ApprovalTypeEnum;
 import com.rdc.kingsa.input.common.constant.KingsaInputConstant;
-import com.rdc.kingsa.input.common.constant.ShuiWenSTHYEnum;
+import com.rdc.kingsa.input.common.constant.SystemTypeEnum;
+import com.rdc.kingsa.input.persistence.dist.SectionAllStore;
+import com.rdc.kingsa.input.server.controller.model.base.data.SectionMD;
+import com.rdc.kingsa.input.server.controller.model.base.data.StaticMD;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,29 +19,42 @@ import java.util.Map;
 @Transactional(rollbackFor = Exception.class)
 @Service("staticService")
 public class StaticService {
-    public final String key = "key";
-    public final String value = "value";
 
-    public Map<String, List<Map<Object, Object>>> staticDatas() {
-        Map<String, List<Map<Object, Object>>> result = Maps.newHashMap();
+    //@Autowired
+    @Resource(name = "sectionAllStore")
+    private SectionAllStore sectionAllStore;
+
+    public StaticMD staticDatas() {
+        StaticMD result = new StaticMD();
+        Map<String, Object> datas = new HashMap<>();
+        result.setDatas(datas);
+        typeDatas(result);
+        List<SectionMD> allSection = sectionAllStore.getAllSection();
+        result.getDatas().put(KingsaInputConstant.SECTION, allSection);
+        return result;
+    }
+
+    public void typeDatas(StaticMD result) {
+        //Map<String, List<Map<Object, Object>>> typeMap = Maps.newHashMap();
+        Map<String, Object> typeMap = Maps.newHashMap();
         List<Map<Object, Object>> systemList = Lists.newArrayList();
-        for (ShuiWenSTHYEnum.SystemType type : ShuiWenSTHYEnum.SystemType.values()) {
+        for (SystemTypeEnum type : SystemTypeEnum.values()) {
             Map<Object, Object> map = new HashMap<>();
-            map.put(key, type.getCode());
-            map.put(value, type.getDesc());
+            map.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
+            map.put(KingsaInputConstant.STATIC_PARAM_VALUE, type.getDesc());
             systemList.add(map);
         }
-        result.put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
+        //typeMap.put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
+        result.getDatas().put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
 
-        List<Map<Object, Object>> shenpiList = Lists.newArrayList();
-        for (ShuiWenSTHYEnum.ShenPiType type : ShuiWenSTHYEnum.ShenPiType.values()) {
+        List<Map<Object, Object>> list = Lists.newArrayList();
+        for (ApprovalTypeEnum type : ApprovalTypeEnum.values()) {
             Map<Object, Object> map = new HashMap<>();
-            map.put(key, type.getCode());
-            map.put(value, type.getDesc());
-            shenpiList.add(map);
+            map.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
+            map.put(KingsaInputConstant.STATIC_PARAM_VALUE, type.getDesc());
+            list.add(map);
         }
-        result.put(KingsaInputConstant.SHENPI_TYPE, shenpiList);
-        return result;
+        result.getDatas().put(KingsaInputConstant.APPROVAL_TYPE, list);
     }
 
 }

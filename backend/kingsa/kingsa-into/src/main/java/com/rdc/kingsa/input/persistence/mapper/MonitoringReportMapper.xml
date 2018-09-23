@@ -19,6 +19,7 @@
     <result column="REVISER" property="reviser" jdbcType="VARCHAR" />
     <result column="CHECKER" property="checker" jdbcType="VARCHAR" />
     <result column="PUBLISHER" property="publisher" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="NUMERIC" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     <!--
@@ -38,12 +39,12 @@
     insert into MONITORING_REPORT (ID, REPORTER_ID, REPORTER_R_NAME, 
       REPORTER_USER_NAME, REPORT_TIME, EXPLANATION, 
       MODIFICATION_TIME, REPORT_TITLE, AUTHOR, 
-      REVISER, CHECKER, PUBLISHER
+      REVISER, CHECKER, PUBLISHER, TYPE
       )
     values (#{id,jdbcType=VARCHAR}, #{reporterId,jdbcType=VARCHAR}, #{reporterRName,jdbcType=VARCHAR}, 
       #{reporterUserName,jdbcType=VARCHAR}, #{reportTime,jdbcType=TIMESTAMP}, #{explanation,jdbcType=VARCHAR}, 
       #{modificationTime,jdbcType=TIMESTAMP}, #{reportTitle,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
-      #{reviser,jdbcType=VARCHAR}, #{checker,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}
+      #{reviser,jdbcType=VARCHAR}, #{checker,jdbcType=VARCHAR}, #{publisher,jdbcType=VARCHAR}, #{type,jdbcType=NUMERIC}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.rdc.kingsa.input.persistence.beans.MonitoringReport" >
@@ -63,7 +64,8 @@
       AUTHOR = #{author,jdbcType=VARCHAR},
       REVISER = #{reviser,jdbcType=VARCHAR},
       CHECKER = #{checker,jdbcType=VARCHAR},
-      PUBLISHER = #{publisher,jdbcType=VARCHAR}
+      PUBLISHER = #{publisher,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=NUMERIC}
     where ID = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -73,7 +75,7 @@
       This element was generated on Wed Sep 19 22:37:10 CST 2018.
     -->
     select ID, REPORTER_ID, REPORTER_R_NAME, REPORTER_USER_NAME, REPORT_TIME, EXPLANATION, 
-    MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER
+    MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER, TYPE
     from MONITORING_REPORT
     where ID = #{id,jdbcType=VARCHAR}
   </select>
@@ -84,7 +86,7 @@
       This element was generated on Wed Sep 19 22:37:10 CST 2018.
     -->
     select ID, REPORTER_ID, REPORTER_R_NAME, REPORTER_USER_NAME, REPORT_TIME, EXPLANATION, 
-    MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER
+    MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER, TYPE
     from MONITORING_REPORT
   </select>
 </mapper>

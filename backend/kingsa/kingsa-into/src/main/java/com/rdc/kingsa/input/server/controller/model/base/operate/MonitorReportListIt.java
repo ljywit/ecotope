@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel("审批列表查询请求信息")
-public class ShenPiListIt {
+public class MonitorReportListIt {
     @ApiModelProperty("水文生态系统Code,对应静态数据接口数据")
     private int shuiWencode;
     @ApiModelProperty("分页查询信息")

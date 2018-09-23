@@ -2,18 +2,33 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="sqlserver2012" />
+            <property name="offsetAsPageNum" value="true" />
+            <property name="rowBoundsWithCount" value="true" />
+            <property name="pageSizeZero" value="true" />
+            <property name="reasonable" value="true" />
+            <property name="params" value="pageNum=start;pageSize=limit;" />
+            <property name="supportMethodsArguments" value="true" />
+            <property name="returnPageInfo" value="check" />
+        </plugin>
+    </plugins>
+</configuration>
+<!--
+<configuration>
 
     <settings>
         <setting name="logImpl" value="SLF4J"/>
-        <!-- 字段为空时仍调用model的set方法或map的put方法 -->
+        &lt;!&ndash; 字段为空时仍调用model的set方法或map的put方法 &ndash;&gt;
         <setting name="callSettersOnNulls" value="true"/>
     </settings>
 
     <plugins>
-        <!-- 分页插件 -->
+        &lt;!&ndash; 分页插件 &ndash;&gt;
         <plugin interceptor="com.base.dal.mybatis.plugin.PageHelper">
             <property name="dialectClass" value="com.base.dal.mybatis.dialect.SqlServerDialect"/>
         </plugin>
     </plugins>
 
-</configuration>
+</configuration>-->
