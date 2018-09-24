@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @ApiModel("审批请求信息")
-public class AprrovalIt {
+public class ApprovalIt {
     @ApiModelProperty("审批记录ID")
     private String id;
     @ApiModelProperty("水文生态系统type,对应静态数据接口数据")

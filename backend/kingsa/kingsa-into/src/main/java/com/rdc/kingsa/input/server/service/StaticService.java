@@ -1,7 +1,6 @@
 package com.rdc.kingsa.input.server.service;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.rdc.kingsa.input.common.constant.ApprovalTypeEnum;
 import com.rdc.kingsa.input.common.constant.KingsaInputConstant;
 import com.rdc.kingsa.input.common.constant.SystemTypeEnum;
@@ -29,23 +28,31 @@ public class StaticService {
         Map<String, Object> datas = new HashMap<>();
         result.setDatas(datas);
         typeDatas(result);
+
         List<SectionMD> allSection = sectionAllStore.getAllSection();
         result.getDatas().put(KingsaInputConstant.SECTION, allSection);
+
+
         return result;
     }
 
     public void typeDatas(StaticMD result) {
-        //Map<String, List<Map<Object, Object>>> typeMap = Maps.newHashMap();
-        Map<String, Object> typeMap = Maps.newHashMap();
         List<Map<Object, Object>> systemList = Lists.newArrayList();
+        List<Map<Object, Object>> downloadTemplateList = Lists.newArrayList();
         for (SystemTypeEnum type : SystemTypeEnum.values()) {
-            Map<Object, Object> map = new HashMap<>();
-            map.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
-            map.put(KingsaInputConstant.STATIC_PARAM_VALUE, type.getDesc());
-            systemList.add(map);
+            Map<Object, Object> sysMap = new HashMap<>();
+            Map<Object, Object> downloadTemplateMap = new HashMap<>();
+            sysMap.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
+            sysMap.put(KingsaInputConstant.STATIC_PARAM_VALUE, type.getDesc());
+            systemList.add(sysMap);
+            downloadTemplateMap.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
+            //TODO
+            downloadTemplateMap.put(KingsaInputConstant.STATIC_PARAM_VALUE, "");
+            downloadTemplateList.add(downloadTemplateMap);
         }
         //typeMap.put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
         result.getDatas().put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
+        result.getDatas().put(KingsaInputConstant.DOWNLOAD_TEMPALTE, downloadTemplateList);
 
         List<Map<Object, Object>> list = Lists.newArrayList();
         for (ApprovalTypeEnum type : ApprovalTypeEnum.values()) {

@@ -89,4 +89,53 @@
     MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER, TYPE
     from MONITORING_REPORT
   </select>
+
+  <select id="findPageByBean" resultMap="BaseResultMap"
+          parameterType="com.rdc.kingsa.input.persistence.beans.MonitoringReport">
+      select ID, REPORTER_ID, REPORTER_R_NAME, REPORTER_USER_NAME, REPORT_TIME, EXPLANATION,
+      MODIFICATION_TIME, REPORT_TITLE, AUTHOR, REVISER, CHECKER, PUBLISHER, TYPE
+    from MONITORING_REPORT
+    <!-- where条件 -->
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <include refid="where_for_query"/>
+    </trim>
+  </select>
+    <sql id="where_for_query">
+        <if test="id != null">
+            AND ID = #{id}
+        </if>
+        <if test="reporterId !=null">
+            AND REPORTER_ID = #{reporterId}
+        </if>
+        <if test="reporterRName !=null">
+            AND REPORTER_R_NAME = #{reporterRName}
+        </if>
+        <if test="reporterUserName !=null">
+            AND REPORTER_USER_NAME = #{reporterUserName}
+        </if>
+        <if test="reportTime !=null">
+            AND REPORT_TIME = #{reportTime}
+        </if>
+        <if test="explanation!=null">
+            AND EXPLANATION = #{explanation}
+        </if>
+        <if test="modificationTime !=null">
+            AND MODIFICATION_TIME = #{modificationTime}
+        </if>
+        <if test="reportTitle !=null">
+            AND REPORT_TITLE = #{reportTitle}
+        </if>
+        <if test="author !=null">
+            AND AUTHOR = #{author}
+        </if>
+        <if test="reviser!=null">
+            AND REVISER = #{reviser}
+        </if>
+        <if test="checker!=null">
+            AND CHECKER = #{checker}
+        </if>
+        <if test="publisher!= null">
+            AND PUBLISHER = #{publisher}
+        </if>
+    </sql>
 </mapper>

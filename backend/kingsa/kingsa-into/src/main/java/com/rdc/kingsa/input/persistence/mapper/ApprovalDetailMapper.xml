@@ -65,4 +65,30 @@
     select ID, APPROVAL_ID, APPROVAL_CONTENT, SN, APPROVAL_USER
     from APPROVAL_DETAIL
   </select>
+  <select id="findPageByBean" resultMap="BaseResultMap"
+          parameterType="com.rdc.kingsa.input.persistence.beans.ApprovalDetail">
+    select  ID, APPROVAL_ID, APPROVAL_CONTENT, SN, APPROVAL_USER
+    from APPROVAL_DETAIL
+    <!-- where条件 -->
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <include refid="where_for_query"/>
+    </trim>
+  </select>
+  <sql id="where_for_query">
+    <if test="id != null">
+      AND ID = #{id}
+    </if>
+    <if test="approvalId !=null">
+      AND APPROVAL_ID = #{approvalId}
+    </if>
+    <if test="approvalContent !=null">
+      AND APPROVAL_CONTENT = #{approvalContent}
+    </if>
+    <if test="sn !=null">
+      AND SN = #{approvalContent}
+    </if>
+    <if test="approvalUser !=null">
+      AND APPROVAL_USER = #{approvalUser}
+    </if>
+  </sql>
 </mapper>

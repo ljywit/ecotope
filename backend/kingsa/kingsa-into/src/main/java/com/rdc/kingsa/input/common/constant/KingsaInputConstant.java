@@ -8,6 +8,7 @@ public class KingsaInputConstant {
     public static final String ROOT_PATH_PROPERTY = "kingsa-into.root";
 
     public static final String SECTION = "section";
+    public static final String DOWNLOAD_TEMPALTE = "download_template";
     public static final String SHUIWEN_TYPE = "shuiwen_type";
     public static final String APPROVAL_TYPE = "approval_type";
 

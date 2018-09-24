@@ -14,7 +14,7 @@ public class JsonUtilTest {
         pageMD.setSum(23);
         MonitorReportListIt monitorReportListIt = new MonitorReportListIt();
         monitorReportListIt.setPagemd(pageMD);
-        monitorReportListIt.setShuiWencode(SystemTypeEnum.GuoBaoHeQiTi.getType());
+        monitorReportListIt.setType(SystemTypeEnum.GuoBaoHeQiTi.getType());
         System.out.println(JsonUtil.toJsonString(monitorReportListIt));
     }
 
