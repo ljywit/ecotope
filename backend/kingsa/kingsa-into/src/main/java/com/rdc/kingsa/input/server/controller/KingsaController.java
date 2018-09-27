@@ -10,21 +10,17 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
 /**
  * 控制层
  */
-//@RestController
 @Api(tags = "Kingsa监测数据录入平台")
-@Controller("kingsaController")
+@RestController("kingsaController")
 @RequestMapping(value = "operations")
 public class KingsaController {
 
@@ -35,10 +31,14 @@ public class KingsaController {
     @Autowired
     private ApprovalService approvalService;
 
+    /**
+     * 需要注意当前状态，审批下一步或退回
+     *
+     * @param input
+     */
     @ApiOperation(value = "审批", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:approve", method = RequestMethod.POST,
-        produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
+            produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void order(@ApiParam("入参") @Valid @RequestBody ApprovalIt input) {
         approvalService.approve(input);
     }
@@ -46,7 +46,6 @@ public class KingsaController {
     @ApiOperation(value = "监测（审批）数据列表获取", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:get-monitor-report-list", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public MonitorReportListOt getMonitorReportList(@ApiParam("入参") @Valid @RequestBody MonitorReportListIt input,
                                                     BindingResult bindingResult) throws Exception {
         return monitorReportService.list(input);
@@ -55,16 +54,16 @@ public class KingsaController {
     @ApiOperation(value = "审批数据单条详细信息（包含审批、监测等数据）", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:get-monitor-report-detail", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public MonitorReportDetailALLOt getMonitorReportDetail(@ApiParam("入参") @Valid @RequestBody MonitorReportDetailALLIt input,
                                                            BindingResult bindingResult) throws Exception {
         return monitorReportService.detail(input);
     }
 
+    //TODO:wangcai 根据id获取查询基本信息
+
     @ApiOperation(value = "监测基本数据保存", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:save-monitor-report", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public void saveMonitorReport(@ApiParam("入参") @Valid @RequestBody MonitorReportIt input,
                                   BindingResult bindingResult) throws Exception {
         //TODO
@@ -73,7 +72,6 @@ public class KingsaController {
     @ApiOperation(value = "监测基本数据删除", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:delete-monitor-report", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public void deleteMonitorReport(@ApiParam("入参") @Valid @RequestBody MonitorReportIt input,
                                     BindingResult bindingResult) throws Exception {
         //TODO
@@ -82,7 +80,6 @@ public class KingsaController {
     @ApiOperation(value = "监测基本数据更新", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:update-monitor-report", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public void updateMonitorReport(@ApiParam("入参") @Valid @RequestBody MonitorReportIt input,
                                     BindingResult bindingResult) throws Exception {
         //TODO
@@ -91,7 +88,6 @@ public class KingsaController {
     @ApiOperation(value = "监测记录临时表查询", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:get-monitor-report-fc-list", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public MonitorReportFCListOt getMonitorReportFCList(@ApiParam("入参") @Valid @RequestBody MonitorReportFCListIt input,
                                                         BindingResult bindingResult) throws Exception {
         //TODO
@@ -101,17 +97,17 @@ public class KingsaController {
     @ApiOperation(value = "监测记录临时表单条信息查询", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:get-monitor-report-fc", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public MonitorReportFCOt getMonitorReportFC(@ApiParam("入参") @Valid @RequestBody MonitorReportFCIt input,
                                                 BindingResult bindingResult) throws Exception {
         //TODO
         return new MonitorReportFCOt();
     }
 
+    //TODO: wangcai 明细保存
+
     @ApiOperation(value = "监测记录临时表单条信息更新", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:update-monitor-report-fc", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public void updateMonitorReportFC(@ApiParam("入参") @Valid @RequestBody MonitorReportFCIt input,
                                                 BindingResult bindingResult) throws Exception {
         //TODO
@@ -120,17 +116,27 @@ public class KingsaController {
     @ApiOperation(value = "监测记录临时表单条信息删除", httpMethod = "POST", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:delete-monitor-report-fc", method = RequestMethod.POST, produces = {
         MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public void deleteMonitorReportFC(@ApiParam("入参") @Valid @RequestBody MonitorReportFCIt input,
-                                                BindingResult bindingResult) throws Exception {
+                                      BindingResult bindingResult) throws Exception {
         //TODO
     }
+
+    //TODO 清空监测记录明细
 
     @ApiOperation(value = "静态数据获取", httpMethod = "GET", produces = "application/json;charset=utf-8")
     @RequestMapping(value = "/kingsa:get-static-datas", method = RequestMethod.GET, produces = {
         MediaType.APPLICATION_JSON_VALUE})
-    @ResponseBody
     public StaticMD getStaticDatas() throws Exception {
         return staticService.staticDatas();
     }
+
+    //TODO 清空监测记录明细
+
+    @ApiOperation(value = "静态数据获取", httpMethod = "GET", produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/kingsa:upload-monitor-report-fc", method = RequestMethod.POST)
+    public UploadMonitorReportFcOt uploadData(@RequestParam("file") MultipartFile file, @RequestParam("data") MonitorReportIt reportData) throws Exception {
+        return null;
+    }
+
+
 }

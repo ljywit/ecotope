@@ -12,7 +12,9 @@ public enum SystemTypeEnum {
     ShuiShengShengTai(50, "水生生态"),
     LuShengShengTai(60, "陆生生态"),
     JuDiQiHou(70, "局地气候"),
-    ShuiWenH(80, "水文"),;
+    ShuiWenH(80, "水文");
+
+    //TODO 每个明细都有自己的service，只是不同的接口实现：导入接口和增删查改的接口
 
     private Integer type;
     private String desc;

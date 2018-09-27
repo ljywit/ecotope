@@ -4,11 +4,13 @@ package com.rdc.kingsa.input.common.constant;
  * 审批
  */
 public enum ApprovalTypeEnum {
-    _OVER(-1, "审批完成"),
-    _0Ji(0, "未审批"),
-    _1Ji(1, "一级审批"),
-    _2Ji(2, "二级审批"),
-    _3Ji(3, "三级审批");
+    _OVER(0, "未提交"),
+    _10Ji(10, "已提交，待一级审批"),
+    _20Ji(20, "一级审批完成，待二级审批"),
+    _30Ji(30, "二级审批完成，待三级级审批"),
+    _40Ji(40, "三级级审批完成，已完成审批"),
+    _50Ji(50, "审批未通过，回到未提交状态"),
+    ;
     private Integer type;
     private String desc;
 
