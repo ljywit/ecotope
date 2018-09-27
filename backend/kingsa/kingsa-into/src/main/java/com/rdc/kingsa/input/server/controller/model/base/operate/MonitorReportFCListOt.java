@@ -15,7 +15,7 @@ public class MonitorReportFCListOt {
     @ApiModelProperty("检测记录ID")
     private String id;
     @ApiModelProperty("分页查询信息")
-    private PageMD pagemd;
+    private PageMD page;
     @ApiModelProperty("监测记录详细信息")
     //private Map<Integer, List<BasicRecordMD>> recordMap;
     private Map<Integer, List<? extends AbstractDO>> recordMap;
@@ -57,21 +57,21 @@ public class MonitorReportFCListOt {
     }
 
     /**
-     * 获取 pagemd
+     * 获取 page
      *
-     * @return pagemd
+     * @return page
      */
-    public PageMD getPagemd() {
-        return pagemd;
+    public PageMD getPage() {
+        return page;
     }
 
     /**
-     * 设置 pagemd
+     * 设置 page
      *
-     * @param pagemd pagemd
+     * @param page page
      */
-    public void setPagemd(PageMD pagemd) {
-        this.pagemd = pagemd;
+    public void setPage(PageMD page) {
+        this.page = page;
     }
 
     /**

@@ -1,17 +1,17 @@
 package com.rdc.kingsa.input.server.controller.model.base.operate;
 
-import com.rdc.kingsa.input.server.controller.model.base.data.PageMD;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel("监测记录详情[包含审批、监测所有记录等]查询请求信息")
-public class MonitorReportDetailALLIt {
+@ApiModel("监测记录临时表单条记录请求信息")
+public class GetMonitorReportFCIt {
     @ApiModelProperty("水文生态系统type,对应静态数据接口数据")
     private int type;
     @ApiModelProperty("检测记录ID")
     private String id;
-    @ApiModelProperty("分页查询信息")
-    private PageMD page;
+    @ApiModelProperty("此检测记录中详情单条信息ID")
+    private String recordId;
 
     /**
      * 获取 type
@@ -50,20 +50,20 @@ public class MonitorReportDetailALLIt {
     }
 
     /**
-     * 获取 page
+     * 获取 recordId
      *
-     * @return page
+     * @return recordId
      */
-    public PageMD getPage() {
-        return page;
+    public String getRecordId() {
+        return recordId;
     }
 
     /**
-     * 设置 page
+     * 设置 recordId
      *
-     * @param page page
+     * @param recordId recordId
      */
-    public void setPage(PageMD page) {
-        this.page = page;
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
     }
 }
