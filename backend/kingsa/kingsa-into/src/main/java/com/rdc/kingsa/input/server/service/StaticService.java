@@ -1,5 +1,11 @@
 package com.rdc.kingsa.input.server.service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import com.google.common.collect.Lists;
 import com.rdc.kingsa.input.common.constant.ApprovalTypeEnum;
 import com.rdc.kingsa.input.common.constant.KingsaInputConstant;
@@ -9,11 +15,6 @@ import com.rdc.kingsa.input.server.controller.model.base.data.SectionMD;
 import com.rdc.kingsa.input.server.controller.model.base.data.StaticMD;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Transactional(rollbackFor = Exception.class)
 @Service("staticService")
@@ -46,13 +47,13 @@ public class StaticService {
             sysMap.put(KingsaInputConstant.STATIC_PARAM_VALUE, type.getDesc());
             systemList.add(sysMap);
             downloadTemplateMap.put(KingsaInputConstant.STATIC_PARAM_KEY, type.getType());
-            //TODO
+            //TODO 下载文件待添加
             downloadTemplateMap.put(KingsaInputConstant.STATIC_PARAM_VALUE, "");
             downloadTemplateList.add(downloadTemplateMap);
         }
-        //typeMap.put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
-        result.getDatas().put(KingsaInputConstant.SHUIWEN_TYPE, systemList);
-        result.getDatas().put(KingsaInputConstant.DOWNLOAD_TEMPALTE, downloadTemplateList);
+        //typeMap.put(KingsaInputConstant.MONITOR_TYPE, systemList);
+        result.getDatas().put(KingsaInputConstant.MONITOR_TYPE, systemList);
+        result.getDatas().put(KingsaInputConstant.DOWNLOAD_TEMPLATE, downloadTemplateList);
 
         List<Map<Object, Object>> list = Lists.newArrayList();
         for (ApprovalTypeEnum type : ApprovalTypeEnum.values()) {

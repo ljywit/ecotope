@@ -62,4 +62,5 @@ public interface BaseDao<T extends AbstractDO, PK extends java.io.Serializable> 
 
     int findNumberByBean(T t) throws Exception;
 
+    int deleteByReportId(String reportId) throws Exception;
 }

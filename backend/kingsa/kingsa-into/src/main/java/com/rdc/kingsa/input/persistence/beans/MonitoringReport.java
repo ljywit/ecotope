@@ -111,6 +111,7 @@ public class MonitoringReport extends AbstractDO{
      */
     private String publisher;
 
+    @ApiModelProperty("监测因子类型")
     private int type;
 
     /**

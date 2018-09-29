@@ -8,10 +8,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class ApprovalIt {
     @ApiModelProperty("审批记录ID")
     private String id;
-    @ApiModelProperty("水文生态系统type,对应静态数据接口数据")
+    @ApiModelProperty("监测因子类型type,对应静态数据接口数据")
     private int type;
     @ApiModelProperty("审批类型,对应静态数据接口数据")
     private int approvalType;
+    @ApiModelProperty("审批方向,打回或者下一步,对应填写的字符串是RESET、NEXT")
+    private String direction;
     @ApiModelProperty("审批意见")
     private String approvalContent;
 
@@ -55,6 +57,24 @@ public class ApprovalIt {
      */
     public void setApprovalContent(String approvalContent) {
         this.approvalContent = approvalContent;
+    }
+
+    /**
+     * 获取 direction
+     *
+     * @return direction
+     */
+    public String getDirection() {
+        return direction;
+    }
+
+    /**
+     * 设置 direction
+     *
+     * @param direction direction
+     */
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 
     @Override

@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel("获取监测记录基本信息查询条件")
 public class GetMonitorReportIt {
-    @ApiModelProperty("水文生态系统type,对应静态数据接口数据")
+    @ApiModelProperty("监测因子类型type,对应静态数据接口数据")
     private int type;
     @ApiModelProperty("监测记录ID")
     private String id;

@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel("监测记录临时表记录删除请求信息-支持批量")
 public class DeleteMonitorReportFCIt {
-    @ApiModelProperty("水文生态系统type,对应静态数据接口数据")
+    @ApiModelProperty("监测因子类型type,对应静态数据接口数据")
     private int type;
     @ApiModelProperty("检测记录基本信息ID")
     private String id;

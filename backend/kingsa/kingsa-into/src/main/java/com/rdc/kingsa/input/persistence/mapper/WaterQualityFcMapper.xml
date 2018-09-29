@@ -111,6 +111,10 @@
     delete from WATER_QUALITY_FC
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByReportId" parameterType="java.lang.String" >
+    delete from WATER_QUALITY_FC
+    where REPORT_ID = #{reportId,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="com.rdc.kingsa.input.persistence.beans.WaterQualityFc" >
     <!--
       WARNING - @mbggenerated
