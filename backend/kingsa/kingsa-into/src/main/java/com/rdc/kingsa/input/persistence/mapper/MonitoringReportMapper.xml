@@ -99,6 +99,7 @@
     <trim prefix="WHERE" prefixOverrides="AND|OR">
       <include refid="where_for_query"/>
     </trim>
+      ORDER BY ID
   </select>
     <sql id="where_for_query">
         <if test="id != null">
@@ -136,6 +137,9 @@
         </if>
         <if test="publisher!= null">
             AND PUBLISHER = #{publisher}
+        </if>
+        <if test="type!= null">
+            AND TYPE = #{type}
         </if>
     </sql>
 </mapper>

@@ -20,7 +20,36 @@ public class KingsaInputConstant {
      * 过饱和气体
      */
     public static final String GSS_SERVICE = "gssService";
+    /**
+     * 表层水温
+     */
+    public static final String SWT_SERVICE = "swtService";
+    /**
+     * 垂向水温
+     */
+    public static final String VWT_SERVICE = "vwtService";
+    /**
+     * 渔获记录
+     */
+    public static final String FISH_RECORD_SERVICE = "fishRecordService";
+    /**
+     * 底栖动物监测
+     */
+    public static final String ZOOBENTHOS_SERVICE = "zooBenthosService";
+    /**
+     * 浮游动物监测
+     */
+    public static final String ZOOPLANKTON_SERVICE = "zooPlanktonService";
+    /**
+     * 浮游Zhi物监测
+     */
+    public static final String PHYTOPLANKTON_SERVICE = "phytoplanktonService";
+    /**
+     * 鱼类早期资源
+     */
+    public static final String REPRODUCTION_SERVICE = "reproductionService";
 
+    /*****************************数据库字段相关*******************************************/
     /**
      * 数据库中记录是否属于此项标志位
      */
@@ -29,6 +58,8 @@ public class KingsaInputConstant {
      * 数据库中记录是否属于此项标志位
      */
     public static final Short RECORD_FALG_NO = 0;
+
+    public static final String REPORT_ID_PARAM = "reportId";
 
     /**
      * 默认页面显示大小

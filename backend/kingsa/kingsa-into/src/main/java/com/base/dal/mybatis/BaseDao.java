@@ -50,7 +50,7 @@ public interface BaseDao<T extends AbstractDO, PK extends java.io.Serializable> 
      */
     List<T> findPageBreakByCondition(Object query, RowBounds rb) throws Exception;
 
-    List<T> findPageBreakByBean(T t, RowBounds rb) throws Exception;
+    List<T> findPageByBean(T t, RowBounds rb) throws Exception;
 
     /**
      * 查询条件下的总数目，用于分页
@@ -62,5 +62,11 @@ public interface BaseDao<T extends AbstractDO, PK extends java.io.Serializable> 
 
     int findNumberByBean(T t) throws Exception;
 
-    int deleteByReportId(String reportId) throws Exception;
+    int deleteByForeignId(String reportId) throws Exception;
+
+    int deleteByPrimaryKey(String id);
+
+    T selectByPrimaryKey(String id);
+
+    int updateByPrimaryKey(T t);
 }

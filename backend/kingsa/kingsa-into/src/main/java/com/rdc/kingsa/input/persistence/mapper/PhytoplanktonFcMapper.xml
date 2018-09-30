@@ -36,10 +36,6 @@
     delete from PHYTOPLANKTON_FC
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByReportId" parameterType="java.lang.String" >
-    delete from PHYTOPLANKTON_FC
-    where REPORT_ID = #{reportId,jdbcType=VARCHAR}
-  </delete>
   <insert id="insert" parameterType="com.rdc.kingsa.input.persistence.beans.PhytoplanktonFc" >
     <!--
       WARNING - @mbggenerated
@@ -111,4 +107,47 @@
     CREATE_TIME, MODIFY_TIME, REMARKS, REPORT_ID
     from PHYTOPLANKTON_FC
   </select>
+
+
+  <delete id="deleteByForeignId" parameterType="java.lang.String">
+    delete from PHYTOPLANKTON_FC
+    where REPORT_ID = #{reportId,jdbcType=VARCHAR}
+  </delete>
+  <select id="findPageByBean" resultMap="BaseResultMap"
+          parameterType="com.rdc.kingsa.input.persistence.beans.PhytoplanktonFc">
+    select
+      ID, SERIAL_NUMBER, RIVER, SECTION_ID, SAMPLING_POINT, LONGITUDE, LATITUDE,
+      MONITOR_TIME, MEASURE_LINE, WATER_DEPTH, PHYLUM, GENUS, SPECIES_NAME, DENSITY, BIOMASS,
+      CREATE_TIME, MODIFY_TIME, REMARKS, REPORT_ID
+    from PHYTOPLANKTON_FC
+    <!-- where条件 -->
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <include refid="where_for_query"/>
+    </trim>
+    ORDER BY ID
+  </select>
+  <select id="findPageBreakByCondition" resultMap="BaseResultMap"
+          parameterType="map">
+    select
+      ID, SERIAL_NUMBER, RIVER, SECTION_ID, SAMPLING_POINT, LONGITUDE, LATITUDE,
+      MONITOR_TIME, MEASURE_LINE, WATER_DEPTH, PHYLUM, GENUS, SPECIES_NAME, DENSITY, BIOMASS,
+      CREATE_TIME, MODIFY_TIME, REMARKS, REPORT_ID
+    from PHYTOPLANKTON_FC
+    <!-- where条件 -->
+    <trim prefix="WHERE" prefixOverrides="AND|OR">
+      <include refid="where_for_query"/>
+    </trim>
+    ORDER BY ID
+  </select>
+  <sql id="where_for_query">
+    <if test="id != null">
+      AND ID = #{id}
+    </if>
+    <if test="sectionId !=null">
+      AND SECTION_ID = #{sectionId}
+    </if>
+    <if test="reportId !=null">
+      AND REPORT_ID = #{reportId}
+    </if>
+  </sql>
 </mapper>

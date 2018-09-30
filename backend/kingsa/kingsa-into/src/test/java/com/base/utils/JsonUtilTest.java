@@ -2,7 +2,7 @@ package com.base.utils;
 
 import com.rdc.kingsa.input.common.constant.SystemTypeEnum;
 import com.rdc.kingsa.input.server.controller.model.base.data.PageMD;
-import com.rdc.kingsa.input.server.controller.model.base.operate.MonitorReportListIt;
+import com.rdc.kingsa.input.server.controller.model.base.operate.GetMonitorReportListIt;
 import org.junit.Test;
 
 public class JsonUtilTest {
@@ -12,7 +12,7 @@ public class JsonUtilTest {
         pageMD.setPageNum(2);
         pageMD.setPageSize(10);
         pageMD.setSum(23);
-        MonitorReportListIt monitorReportListIt = new MonitorReportListIt();
+        GetMonitorReportListIt monitorReportListIt = new GetMonitorReportListIt();
         monitorReportListIt.setPagemd(pageMD);
         monitorReportListIt.setType(SystemTypeEnum.GuoBaoHeQiTi.getType());
         System.out.println(JsonUtil.toJsonString(monitorReportListIt));
