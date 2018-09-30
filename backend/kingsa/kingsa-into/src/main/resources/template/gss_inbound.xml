@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+    <header>
+        <sheetName>Sheet1</sheetName>
+        <fromUp2Down>true</fromUp2Down>
+        <headerRowNum>0</headerRowNum>
+        <headerColNum>0</headerColNum>
+        <titleRowNum>2</titleRowNum>
+    </header>
+    <fields>
+        <!--<name>字段名称</name>-->
+        <!--<label>excel的列名称</label>-->
+        <!--<row>行号，相对于headerRowNum</row>-->
+        <!--<col>列号，相对于headerColNum</col>-->
+        <!--<mandatory>是否必输，同时适用于mappingFieldName</mandatory>-->
+        <!--<checkLabel>是否校验label，默认值true</checkLabel>-->
+        <!--<type>字段类型，默认java.lang.String</type>-->
+        <!--<format>格式</format>-->
+        <!--<mappingType>mapping类型</mappingType>-->
+        <!--<mappingCode>mappingCode</mappingCode>-->
+        <!--<mappingFieldName>mapping后的字段进行设置，如果为空，则直接使用name</mappingFieldName>-->
+
+        <!--sample-->
+        <!--<field name="monitorTime" label="监测日期" col="0" row="0" mandatory="true" type="java.util.Date" format="yyyy-MM-dd" mappingType="section" mappingCode="101"/>-->
+        <!--end-->
+        <field name="monitorDate" label="监测日期" col="0" row="0" mandatory="true" checkLabel="true" type="java.util.Date"
+               format="yyyy.MM.dd"/>
+        <field name="monitorTime" label="时间" col="1" row="0" mandatory="true" type="java.util.Date" format="HH:mm"/>
+        <field name="sectionName" label="断面" col="2" row="0" mandatory="true" type="java.lang.String"
+               mappingFieldName="sectionId" mappingType="section" mappingCode="101"/>
+        <field name="measureLine" label="测线" col="3" row="0" mandatory="true" type="java.lang.String"/>
+        <field name="pressure" label="气压(百帕)" col="4" row="0" mandatory="true" type="java.lang.Double"/>
+        <field name="waterDepth" label="水深(m)" col="5" row="0" mandatory="true" type="jjava.lang.Double"/>
+        <field name="waterTemper" label="水温(℃)" col="6" row="0" mandatory="true" type="java.lang.Double"/>
+        <field name="doInstrument" label="DO仪器(mg/L)" col="7" row="0" mandatory="true" type="java.lang.Double"/>
+        <field name="doContent" label="DO" col="8" row="1" mandatory="true" type="java.lang.Double"/>
+        <field name="dnContent" label="DN" col="9" row="1" mandatory="true" type="java.lang.Double"/>
+        <field name="doSaturation" label="DO" col="10" row="1" mandatory="true" type="java.lang.Double"/>
+        <field name="dnSaturation" label="DN" col="11" row="1" mandatory="true" type="java.lang.Double"/>
+        <field name="tdgSaturation" label="TDG(%)" col="12" row="0" mandatory="true" type="java.lang.Double"/>
+        <field name="remarks" label="备注" col="13" row="0" mandatory="true"/>
+    </fields>
+</template>

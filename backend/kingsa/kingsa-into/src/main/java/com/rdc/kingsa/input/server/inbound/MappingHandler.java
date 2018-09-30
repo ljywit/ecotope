@@ -1,7 +1,9 @@
 package com.rdc.kingsa.input.server.inbound;
 
 public class MappingHandler {
-    public String getSectionId(String sectionName, String type, String code) {
+    public static final String SECTION_TYPE = "SECTION";
+
+    public static String getSectionId(String sectionName, String mappingCode) {
 
         return "SECTIONUUID";
     }
