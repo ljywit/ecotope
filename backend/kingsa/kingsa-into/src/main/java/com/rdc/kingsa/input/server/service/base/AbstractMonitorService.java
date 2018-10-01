@@ -30,6 +30,7 @@ import com.rdc.kingsa.input.server.controller.model.base.operate.MonitorReportDe
 import com.rdc.kingsa.input.server.controller.model.base.operate.MonitorReportDetailALLOt;
 import com.rdc.kingsa.input.server.controller.model.base.operate.UpdateMonitorReportFCIt;
 import com.rdc.kingsa.input.server.controller.model.base.operate.UpdateMonitorReportIt;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -51,10 +52,12 @@ public abstract class AbstractMonitorService {
         PageMD pagemd = input.getPagemd();
         MonitoringReport queryBean = new MonitoringReport();
         queryBean.setType(input.getType());
-        List<MonitoringReport> list = monitoringReportMapper.findPageBreakByBean(queryBean,
-            KingsaUtil.rowBounds(pagemd));
+        List<MonitoringReport> list = monitoringReportMapper.findPageByBean(queryBean, KingsaUtil.rowBounds(pagemd));
         GetMonitorReportListOt getMonitorReportListOt = new GetMonitorReportListOt();
+        BeanUtils.copyProperties(getMonitorReportListOt, input);
         getMonitorReportListOt.setMonitoringReportList(list);
+        //TODO
+        getMonitorReportListOt.getPage().setSum(11);
         return getMonitorReportListOt;
     }
 
@@ -211,7 +214,7 @@ public abstract class AbstractMonitorService {
         Approval approval = approvalMapper.selectByPrimaryKey(id);
         ApprovalDetail query = new ApprovalDetail();
         query.setApprovalId(id);
-        List<ApprovalDetail> approvalDetails = approvalDetailMapper.findPageBreakByBean(query, RowBounds.DEFAULT);
+        List<ApprovalDetail> approvalDetails = approvalDetailMapper.findPageByBean(query, RowBounds.DEFAULT);
         ApprovalMD approvalMD = new ApprovalMD(approval, approvalDetails);
         return approvalMD;
     }
