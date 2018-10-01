@@ -27,7 +27,7 @@
                format="yyyy.MM.dd"/>
         <field name="monitorTime" label="时间" col="1" row="0" mandatory="true" type="java.util.Date" format="HH:mm"/>
         <field name="sectionName" label="断面" col="2" row="0" mandatory="true" type="java.lang.String"
-               mappingFieldName="sectionId" mappingType="section" mappingCode="101"/>
+               mappingFieldName="sectionId" mappingType="section" mappingCode="30"/>
         <field name="measureLine" label="测线" col="3" row="0" mandatory="true" type="java.lang.String"/>
         <field name="pressure" label="气压(百帕)" col="4" row="0" mandatory="true" type="java.lang.Double"/>
         <field name="waterDepth" label="水深(m)" col="5" row="0" mandatory="true" type="jjava.lang.Double"/>

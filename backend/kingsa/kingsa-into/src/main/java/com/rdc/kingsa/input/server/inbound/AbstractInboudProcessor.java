@@ -130,7 +130,6 @@ public abstract class AbstractInboudProcessor {
 			previousCells = currentCells;
 			currentCells = readRecord(++positiveIndex);
 		}
-
 	}
 
 	protected Cell[] readRecord(int i) {
@@ -175,12 +174,18 @@ public abstract class AbstractInboudProcessor {
 					} else if ("java.util.Date".equals(type)) {
 						String format = StringUtil.isNotEmpty(field.getFormat()) ? field.getFormat() : DateUtils.YYYY_MM_DD;
 						cellValue = DateUtils.string2Date(cellStr, format);
+						if (StringUtil.isEmpty(cellValue)) {
+							valid = false;
+						}
 					}
 					jobMap.put(field.getName(), cellValue);
 				} catch (Exception e) {
-					lstErrorMsg.add("第" + absoluteRow + "行, 第" + absoluteCol + "列‘" + field.getLabel() + "’的格式不对!");
-					continue;
+					valid = false;
 				}
+			}
+			if (!valid) {
+				lstErrorMsg.add("第" + absoluteRow + "行, 第" + absoluteCol + "列‘" + field.getLabel() + "’的格式不对!");
+				continue;
 			}
 			String mappingType = field.getMappingType();
 			String mappingCode = field.getMappingCode();
